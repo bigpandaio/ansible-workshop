@@ -1,0 +1,5 @@
+---
+- hosts: web-1
+  tasks:
+    - name: my first ansible task ever!
+      command: echo "hello world"
