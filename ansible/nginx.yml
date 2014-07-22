@@ -25,5 +25,5 @@
       copy: src=files/index.html dest=/var/www owner=www-data group=www-data
 
     - name: restart nginx
-      command: service nginx restart
+      service: name=nginx state=restarted
 
