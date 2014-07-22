@@ -3,11 +3,12 @@
 
 server {
 
-  listen 80
+  listen 80 default_server;
 
-  root {{ static_root_dir }}
+  root {{ static_root_dir }};
   index index.html index.htm;
 
+  # Make site accessible from http://localhost/
   server_name localhost;
 
   location / {
@@ -15,6 +16,5 @@ server {
     # as directory, then fall back to displaying a 404.
     try_files $uri $uri/ =404;
   }
-
 
 }

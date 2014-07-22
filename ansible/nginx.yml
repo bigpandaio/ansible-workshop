@@ -1,7 +1,29 @@
 ---
 - hosts: web-1
+  sudo: yes
   tasks:
+
+    - name: include vars
+      include_vars: vars.yml
 
     - name: install nginx
       apt: name=nginx state=present
-      sudo: yes
+
+    - name: generate site from template
+      template: src=templates/static.j2 dest=/etc/nginx/sites-available/static
+
+    - name: enable site
+      file: path=/etc/nginx/sites-enabled/static src=/etc/nginx/sites-available/static state=link
+
+    - name: delete default site
+      file: path=/etc/nginx/sites-enabled/default state=absent
+
+    - name: create static root dir
+      file: path={{ static_root_dir }} state=directory owner=www-data group=www-data recurse=true
+
+    - name: copy static HTML files to root dir
+      copy: src=files/index.html dest=/var/www owner=www-data group=www-data
+
+    - name: restart nginx
+      command: service nginx restart
+
