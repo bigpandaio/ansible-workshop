@@ -1,0 +1,16 @@
+---
+- name: add 'chris-lea' PPA for Node.js
+  sudo: true
+  apt_repository: repo=ppa:chris-lea/node.js
+
+- name: install dependencies
+  sudo: true
+  apt: pkg={{item}}
+  with_items:
+     - python-software-properties
+     - g++
+     - make
+
+- name: install package
+  sudo: true
+  apt: pkg=nodejs
