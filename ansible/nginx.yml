@@ -1,18 +1,15 @@
 ---
 - hosts: web-1
   sudo: yes
+
+  roles:
+    - common
+    - nginx
+
   tasks:
 
     - name: include vars
       include_vars: vars.yml
-
-    - name: install nginx
-      apt: name=nginx state=present
-      when: ansible_os_family == "Debian"
-
-    - name: install nginx
-      yum: name=nginx state=present
-      when: ansible_os_family == "RedHat"
 
     - name: generate site from template
       template: src=templates/{{ item }}.j2 dest=/etc/nginx/sites-available/{{ item }}
@@ -30,11 +27,6 @@
       notify:
         - reload nginx
 
-    - name: delete default site
-      file: path=/etc/nginx/sites-enabled/default state=absent
-      notify:
-        - reload nginx
-
     - name: create static root dir
       file: path={{ static_root_dir }} state=directory owner=www-data group=www-data recurse=true
 
@@ -47,21 +39,14 @@
 
   handlers:
 
-    - name: reload nginx
-      service: name=nginx state=reloaded
+    - include: roles/nginx/handlers/main.yml
+
 
 - hosts: web-1
   vars:
     - parent_dir: /opt/bigpanda
 
   tasks:
-
-    - name: install nodejs
-      include: nodejs.yml
-
-    - name: install git
-      apt: name=git state=present
-      sudo: yes
 
     - name: create application parent dir
       file: path={{ parent_dir }} owner=vagrant group=vagrant state=directory
