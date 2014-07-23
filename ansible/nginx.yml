@@ -50,3 +50,28 @@
     - name: reload nginx
       service: name=nginx state=reloaded
 
+- hosts: web-1
+  vars:
+    - parent_dir: /opt/bigpanda
+
+  tasks:
+
+    - name: install nodejs
+      include: nodejs.yml
+
+    - name: install git
+      apt: name=git state=present
+      sudo: yes
+
+    - name: create application parent dir
+      file: path={{ parent_dir }} owner=vagrant group=vagrant state=directory
+      sudo: yes
+
+    - name: clone application to target dir
+      git: repo=git@github.com:bigpandaio/ansible-workshop.git dest={{ parent_dir }}/ansible-workshop accept_hostkey=true
+
+    - name: npm install
+      npm: path={{ parent_dir }}/ansible-workshop/app production={{ (env | default('dev')) == 'prod' }}
+
+    - name: run application
+      shell: chdir={{ parent_dir }}/ansible-workshop/app free_form="DEBUG=app ./bin/www > /dev/null 2>&1 &"
