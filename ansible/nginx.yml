@@ -69,9 +69,22 @@
 
     - name: clone application to target dir
       git: repo=git@github.com:bigpandaio/ansible-workshop.git dest={{ parent_dir }}/ansible-workshop accept_hostkey=true
+      notify:
+        - restart app
 
     - name: npm install
       npm: path={{ parent_dir }}/ansible-workshop/app production={{ (env | default('dev')) == 'prod' }}
 
-    - name: run application
-      shell: chdir={{ parent_dir }}/ansible-workshop/app free_form="DEBUG=app ./bin/www > /dev/null 2>&1 &"
+    - name: copy upstart configuration
+      copy: src=files/demo.conf dest=/etc/init/
+      sudo: yes
+
+    - name: start app
+      service: name=demo state=started enabled=true
+      sudo: yes
+
+  handlers:
+
+    - name: restart app
+      service: name=demo state=restarted
+      sudo: yes
