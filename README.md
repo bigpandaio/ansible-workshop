@@ -18,6 +18,8 @@ Jumping between chapters is easy and done using Git mechanics:
 
 **Note**: You can't move to the next chapter if you did any local changes until you reset the Git repository. To do that simply execute `git reset --hard`
 
+<pre>
+
 
                ..,:::,,,:::,..                ...,::,,,,::,...
             .,:.             .,,.          ..:.              .:..
@@ -61,3 +63,5 @@ Jumping between chapters is easy and done using Git mechanics:
                                  .:      :.
                                   .,.  .:.
                                      ..
+
+</pre>
