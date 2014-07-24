@@ -1,4 +1,1 @@
 ---
-static_root_dir: /var/www
-sites:
- - static

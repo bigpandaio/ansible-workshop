@@ -1,0 +1,8 @@
+static-1 ansible_connection=ssh static_root_dir=/var/www
+dynamic-1 ansible_connection=ssh
+
+[static]
+static-1
+
+[dynamic]
+dynamic-1

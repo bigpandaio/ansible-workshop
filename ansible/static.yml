@@ -1,5 +1,5 @@
 ---
-- hosts: web-1
+- hosts: static
   sudo: yes
 
   roles:
