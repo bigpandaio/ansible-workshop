@@ -1,0 +1,15 @@
+---
+
+- include: ../../sites/tasks/main.yml
+
+- name: create static root dir
+  file: path={{ static_root_dir }} state=directory owner=www-data group=www-data recurse=true
+  sudo: yes
+
+- name: copy static HTML files to root dir
+  copy: src={{ item }} dest=/var/www owner=www-data group=www-data
+  sudo: yes
+  with_fileglob:
+    - ./*.html
+  notify:
+    - reload nginx

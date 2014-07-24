@@ -3,12 +3,15 @@
 - name: install nginx
   apt: name=nginx state=present
   when: ansible_os_family == "Debian"
+  sudo: yes
 
 - name: install nginx
   yum: name=nginx state=present
   when: ansible_os_family == "RedHat"
+  sudo: yes
 
 - name: delete default site
   file: path=/etc/nginx/sites-enabled/default state=absent
   notify:
     - reload nginx
+  sudo: yes

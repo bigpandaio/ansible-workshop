@@ -1,0 +1,15 @@
+---
+
+- name: generate site from template
+  template: src={{ item }}.j2 dest=/etc/nginx/sites-available/{{ item }}
+  with_items: sites
+  notify:
+    - reload nginx
+  sudo: yes
+
+- name: enable site
+  file: path=/etc/nginx/sites-enabled/{{ item }} src=/etc/nginx/sites-available/{{ item }} state=link
+  with_items: sites
+  notify:
+    - reload nginx
+  sudo: yes

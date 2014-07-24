@@ -1,0 +1,7 @@
+---
+- hosts: web-1
+  sudo: yes
+
+  roles:
+    - static
+    - sites

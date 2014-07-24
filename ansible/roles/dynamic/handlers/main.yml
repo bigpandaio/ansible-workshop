@@ -1,0 +1,7 @@
+---
+
+- include: ../../nginx/handlers/main.yml
+
+- name: restart app
+  service: name=demo state=restarted
+  sudo: yes

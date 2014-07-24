@@ -1,0 +1,23 @@
+---
+
+- name: create application parent dir
+  file: path={{ parent_dir }} owner=vagrant group=vagrant state=directory
+  sudo: yes
+
+- name: clone application to target dir
+  git: repo=git@github.com:bigpandaio/ansible-workshop.git dest={{ parent_dir }}/ansible-workshop accept_hostkey=true
+  notify:
+    - restart app
+  sudo: no
+
+- name: npm install
+  npm: path={{ parent_dir }}/ansible-workshop/app production={{ (env | default('dev')) == 'prod' }}
+  sudo: no
+
+- name: copy upstart configuration
+  copy: src=demo.conf dest=/etc/init/
+  sudo: yes
+
+- name: start app
+  service: name=demo state=started enabled=true
+  sudo: yes
