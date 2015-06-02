@@ -1,0 +1,3 @@
+ansible/hosts
+.vagrant/
+.DS_Store
