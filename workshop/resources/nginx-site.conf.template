@@ -1,0 +1,22 @@
+server {
+  listen 80;
+
+  access_log  /var/log/nginx/workshop.access.log;
+  error_log  /var/log/nginx/workshop.error.log;
+
+  location /when {
+    return 200 "Deployed at {{ ansible_date_time.date }} at {{ ansible_date_time.time }}";
+  }
+
+  location / {
+    alias /var/www/workshop/;
+    autoindex off;
+
+    expires 1h;
+
+    gzip             on;
+    gzip_comp_level	 3;
+    gzip_types text/css text/javascript application/x-javascript;
+  }
+}
+

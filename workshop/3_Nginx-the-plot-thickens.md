@@ -60,3 +60,7 @@ skipping: [ansible-workshop-vagrant]
 That's the *Install Nginx* task that is not running because the `when` directive is false.
 
 AHHH.
+
+#### Still though, We've just installed Nginx, haven't really deployed anything have we now?
+
+Ok Ok, KEEP CALM AND MOVE TO [THE NEXT STEP](./4_Nginx-now-for-content.md)

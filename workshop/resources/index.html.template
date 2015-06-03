@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Ansible Hands on Workshop for Beginners</title>
+    </head>
+    <body>
+        <header>
+            <h1>Ansible Hands on Workshop for Beginners</h1>
+        </header>
+    </body>
+</html>
