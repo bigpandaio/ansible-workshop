@@ -1,3 +1,4 @@
 ansible/hosts
+/*.yml
 .vagrant/
 .DS_Store
