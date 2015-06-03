@@ -2,14 +2,13 @@
 
 ### Running Ansible Ad-Hoc commands
 
+Now we'll use Ansible to run ad hoc commands on our host
+
 Examples
 
 ```
 ansible ansible-workshop-vagrant -m ping
-```
-
-```
-ansible ansible-workshop-vagrant -m setup
+ansible ansible-workshop-vagrant -a "/bin/echo Hello there\!"
 ```
 
 #### Good for:
@@ -19,5 +18,12 @@ ansible ansible-workshop-vagrant -m setup
 
 #### Not that good for:
 
-- Reoccoring events (deployments / configuration)
+- Reoccuring events (deployments / configuration)
 - Needs to be entered manually (THE HORROR!!1)
+
+### But they, that's not very *AUTOMATED*??
+
+True dat, see [the next step](./1_Why-Hello-There-Playbooks.yml)
+
+
+**NOTE:** *This assumes that you've run `bootstrap.sh`*
