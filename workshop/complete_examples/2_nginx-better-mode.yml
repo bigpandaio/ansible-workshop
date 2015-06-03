@@ -1,0 +1,16 @@
+---
+- name: Initial playbook
+  hosts: all
+  tasks:
+    - name: install nginx
+      apt:  name=nginx state=present
+      sudo: yes
+      when: ansible_os_family == "Debian"
+
+    - name: install nginx
+      yum:  name=nginx state=present
+      sudo: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: validate that nginx is installed
+      uri:  url=http://localhost method=HEAD
