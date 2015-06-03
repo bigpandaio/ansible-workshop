@@ -8,7 +8,7 @@ Examples
 
 ```
 ansible ansible-workshop-vagrant -m ping
-ansible ansible-workshop-vagrant -a "/bin/echo Hello there\!"
+ansible ansible-workshop-vagrant -a '/bin/echo Hello there!'
 ```
 
 #### Good for:
@@ -23,7 +23,7 @@ ansible ansible-workshop-vagrant -a "/bin/echo Hello there\!"
 
 ### But they, that's not very *AUTOMATED*??
 
-True dat, see [the next step](./1_Why-Hello-There-Playbooks.yml)
+True dat, see [the next step](./1_Why-Hello-There-Playbooks.md)
 
 
 **NOTE:** *This assumes that you've run `bootstrap.sh`*
