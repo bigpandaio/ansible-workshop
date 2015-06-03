@@ -69,7 +69,7 @@ Prerequisites:
 
 ## So I've cloned the repo, now what?
 
-See the `workshop` directory, you'll find a series of markdown steps that we'll be going through at the workshop.
+See the `workshop` directory, you'll find a series of markdown steps that we'll be going through at the workshop, let's start with [step 0](./workshop/0_AdHoc-Commands.md)
 
 
 *Enjoy!*
