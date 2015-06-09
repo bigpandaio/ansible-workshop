@@ -12,7 +12,7 @@ Let's start by making a copy of the last dummy playbook to save some time:
 cp ./workshop/complete_examples/0_initial.yml ./nginx-awesome.yml
 ```
 
-Let's open that in our favorite $EDITOR
+Let's open that in our favorite `$EDITOR`
 
 ```
 ---
