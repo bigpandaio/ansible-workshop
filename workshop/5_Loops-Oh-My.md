@@ -69,3 +69,38 @@ As a matter of principle, things which don't need to run, shouldn't.
 An example given in our own case, we don't need to reload Nginx if we don't change any content there.
 
 This is achived using handlers, which are basically task who occur only if the tasks that trigger the handler has changed.
+
+E.g
+
+```
+  tasks:
+    ...
+    - name: Create static root dir
+      file: path=/var/www/workshop state=directory owner=www-data group=www-data
+      sudo: yes
+    
+    - name: Copy static HTML files to root dir
+      copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
+      sudo: yes
+      notify:
+        - reload nginx
+
+    - name: Disable default site in nginx
+      file: path=/etc/nginx/sites-enabled/default state=absent
+      sudo: yes
+
+    - name: Add our own nginx site
+      copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner-www-data group=www-data
+      sudo: yes
+
+    - name: Symlink our nginx site
+      file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
+      sudo: yes
+      notify:
+        - reload nginx
+
+  handlers:
+    - name: reload nginx
+      service: name=nging state=reloaded
+
+```
