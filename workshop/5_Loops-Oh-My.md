@@ -108,4 +108,6 @@ E.g
 
 ```
 
+All of this is awesome, but having such a long file smells.
 
+True dat, you need some [awesome spice called roles](./6_Advanced-Roles.md)
