@@ -6,32 +6,32 @@
       - nginx
       - cowsay
   tasks:
-    - name: install ALL THE PACKAGES
+    - name: Install ALL THE PACKAGEz on Ubuntu/Debian
       apt:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "Debian"
       with_items: packages_to_install
 
-    - name: install nginx
+    - name: Install ALL THE PACKAGES on RedHat/CentOS
       yum:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
       with_items: packages_to_install   
 
-    - name: validate that nginx is installed
+    - name: Validate that nginx is installed
       uri:  url=http://127.0.0.1
 
-    - name: create static root dir
-      file: path=/var/www/workshop state=directory owner=www-data group=www-data recurse=true
+    - name: Create static root dir
+      file: path=/var/www/workshop state=directory owner=www-data group=www-data
       sudo: yes
     
-    - name: copy static HTML files to root dir
+    - name: Copy static HTML files to root dir
       copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
       sudo: yes
       notify:
         - Reload nginx
 
-    - name: disable default site in Nginx
+    - name: Disable default site in Nginx
       file: path=/etc/nginx/sites-enabled/default state=absent
       sudo: yes
 
@@ -41,7 +41,7 @@
       notify:
         - Reload nginx
 
-    - name: symlink our nginx site
+    - name: Symlink our nginx site
       file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
       sudo: yes
       notify:
@@ -51,5 +51,3 @@
     - name: Reload nginx
       service: name=nginx state=reloaded
       sudo: yes
-
-

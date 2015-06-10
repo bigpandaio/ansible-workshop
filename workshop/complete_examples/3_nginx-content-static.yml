@@ -7,7 +7,7 @@
       sudo: yes
       when: ansible_os_family == "Debian"
 
-    - name: Install nginx on RedHat/CentOs
+    - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "RedHat"

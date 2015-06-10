@@ -21,7 +21,7 @@ Ansible helps us here, by giving us the option of doing loops using the `with_it
         - nginx
         - cowsay
 
-    - name: Install ALL THE PACKAGEZ on RedHat/CentOs
+    - name: Install ALL THE PACKAGEZ on RedHat/CentOS
       yum:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
@@ -39,13 +39,13 @@ We can even DRY that up even more by defining the packages as a local variable:
       - nginx
       - cowsay
   tasks:
-    - name: install ALL THE PACKAGES
+    - name: install ALL THE PACKAGEz on Ubuntu/Debian
       apt:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "Debian"
       with_items: packages_to_install
 
-    - name: install nginx
+    - name: Install ALL THE PACKAGEz on RedHat/CentOS
       yum:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "RedHat"

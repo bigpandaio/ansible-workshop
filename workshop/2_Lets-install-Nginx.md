@@ -1,6 +1,6 @@
 ## Sweet, so playbooks rock, what do I do with them?
 
-### Let's install us something common and simple shall we? - Nginx
+#### Let's install us something common and simple shall we? - Nginx
 
 ![I DON'T ALWAYS INSTALL SOMETHING SIMPLE, BUT WHEN I DO IT'S THE MOST POPULAR HIGH PERFORMANCE WEBSERVER OUT THERE](http://cdn.meme.am/instances2/500x/178503.jpg)
 
@@ -36,12 +36,12 @@ The `apt` module takes the name of the package we want to install and the state 
 - name: Initial playbook
   hosts: all
   tasks:
-    - name: Install Nginx
+    - name: Install nginx
       apt: name=nginx state=present
       sudo: yes
 ```
 
-Needless to say, we'll need the *Install Nginx* task to run as sudo.
+Needless to say, we'll need the *Install nginx* task to run as sudo.
 And now we run it as before:
 
 ```
@@ -56,7 +56,7 @@ curl -I 127.0.0.1:8083
 
 **NOTE:** *`8083` is a port set up in the vagrant file that is forwarded from the vm's port 80.*
 
-#### Wait a minute, why not check that in ansible?
+#### Wait a minute, why not check that in Ansible?
 
 Let's add a dummy health check shall we?
 We'll use the `uri` module, and do a quick `HEAD` request.
@@ -73,6 +73,6 @@ We'll use the `uri` module, and do a quick `HEAD` request.
 
 But.. this is kind of to tight coupled with installing Nginx on Ubuntu.
 
-How would we be able to use the same playbook, say on CentOs?
+How would we be able to use the same playbook, say on CentOS?
 
 That's an excellent question, see the [next step](./3_Nginx-the-plot-thickens.md).

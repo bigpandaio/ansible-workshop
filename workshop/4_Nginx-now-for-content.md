@@ -16,7 +16,7 @@ Man, this is Geocities all over again! The excitement!!1
       sudo: yes
       when: ansible_os_family == "Debian"
 
-    - name: Install nginx on RedHat/CentOs
+    - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
@@ -63,6 +63,8 @@ Let's update the Nginx site definition with our own (and remove the default).
       service: name=nginx state=reloaded
       sudo: yes
 ```
+
+Now we can open our amazing SINGLE PAGE APP [here](http://127.0.0.1:8083)
 
 #### I SEE WHAT U DID THERE...
 
@@ -136,9 +138,11 @@ CURL TIME:
 curl http://127.0.0.1:8083/answer
 ```
 
-There's loads of Jinja filters available,from string manipulations to list comprehensions, and guess what, they're extendable! You can write the yourself in Python (FTW™).
+There's loads of Jinja filters available, from string manipulations to list comprehensions, and guess what, they're extendable! You can write the yourself in Python (FTW™).
 
 #### MIND BLOWN.
+
+![MIND BLOWN](http://i.imgur.com/C4buo.gif)
 
 Let's to a small break, we'll probably need some snacks to make all of this AWESOMENESS melt in.
 See you in 5 minutes at [the next step](./5_Loops-Oh-My.md).

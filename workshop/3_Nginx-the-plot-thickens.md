@@ -49,7 +49,7 @@ ansible -i ansible/hosts all -m setup
       sudo: yes
       when: ansible_os_family == "Debian"
 
-    - name: Install nginx on RedHat/CentOs
+    - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
@@ -63,7 +63,7 @@ The Ansible output now had a skipped task:
 skipping: [ansible-workshop-vagrant]
 ```
 
-That's the *Install nginx on RedHat/CentOs* task that is not running because the `when` directive is false.
+That's the *Install nginx on RedHat/CentOS* task that is not running because the `when` directive is false.
 
 AHHH.
 

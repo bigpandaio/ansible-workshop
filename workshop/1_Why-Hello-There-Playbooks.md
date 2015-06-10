@@ -1,6 +1,6 @@
 ## Ok, Ad Hoc might come in handy, but I can't work like that!
 
-### Say Hello To My Little Friend: "Playbooks"
+#### Say Hello To My Little Friend: "Playbooks"
 
 Playbooks are YAML files that declaratively express tasks to run on a set of hosts
 
@@ -79,8 +79,7 @@ ansible-workshop-vagrant ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
 
 #### Ok, what was that we ran?
 
-Let's have a looksie at the playbook
-
+Let's have a looksie at the playbook:
 
 ```
 ---
@@ -93,7 +92,7 @@ Let's have a looksie at the playbook
 
 We asked Ansible to run on all hosts known to the inventory file we passed it, and ping that server.
 
-**NOTE:** *The Ansible Ping module doesn't actually run the ping command, just verifies that ansible can connect via ssh to the host*.
+**NOTE:** *The Ansible `ping` module doesn't actually run the ping command, just verifies that ansible can connect via ssh to the host*.
 
 
 #### Well that did a can of whoop-nothing!
