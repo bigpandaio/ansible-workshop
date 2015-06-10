@@ -2,7 +2,8 @@
 
 ### Let's install us something common and simple shall we? - Nginx
 
-[INSERT MEME HERE - "I DON'T ALWAYS INSTALL SOMETHING SIMPLE, BUT WHEN I DO IT'S THE MOST POPULAR HIGH PERFORMANCE WEBSERVER OUT THERE"]
+![I DON'T ALWAYS INSTALL SOMETHING SIMPLE, BUT WHEN I DO IT'S THE MOST POPULAR HIGH PERFORMANCE WEBSERVER OUT THERE](http://cdn.meme.am/instances2/500x/178503.jpg)
+
 
 #### Bootstrapping our new playbook
 
@@ -53,7 +54,7 @@ And we can test that it works by doing:
 curl -I 127.0.0.1:8083
 ```
 
-**NOTE:** *`8083` is a port set up in the vagrant file that forwards from the vm's port 80.*
+**NOTE:** *`8083` is a port set up in the vagrant file that is forwarded from the vm's port 80.*
 
 #### Wait a minute, why not check that in ansible?
 
@@ -64,7 +65,7 @@ We'll use the `uri` module, and do a quick `HEAD` request.
 ...
   tasks:
     ...
-    - name: validate that nginx is running
+    - name: Validate that nginx is running
       uri: url=http://localhost method=HEAD
 ```
 
@@ -72,6 +73,6 @@ We'll use the `uri` module, and do a quick `HEAD` request.
 
 But.. this is kind of to tight coupled with installing Nginx on Ubuntu.
 
-How would we be able to use the same playbook, say on Centos?
+How would we be able to use the same playbook, say on CentOs?
 
 That's an excellent question, see the [next step](./3_Nginx-the-plot-thickens.md).

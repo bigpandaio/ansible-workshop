@@ -2,15 +2,15 @@
 - name: Initial playbook
   hosts: all
   tasks:
-    - name: install nginx
+    - name: Install nginx on Ubuntu/Debian
       apt:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "Debian"
 
-    - name: install nginx
+    - name: Install Nginx on RedHat/CentOs
       yum:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
 
-    - name: validate that nginx is installed
+    - name: Validate that nginx is installed
       uri:  url=http://localhost method=HEAD

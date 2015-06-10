@@ -11,24 +11,24 @@ Man, this is Geocities all over again! The excitement!!1
 - name: Initial playbook
   hosts: all
   tasks:
-    - name: install nginx
+    - name: Install nginx on Ubuntu/Debian
       apt:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "Debian"
 
-    - name: install nginx
+    - name: Install nginx on RedHat/CentOs
       yum:  name=nginx state=present
       sudo: yes
       when: ansible_os_family == "RedHat"
 
-    - name: validate that nginx is installed
+    - name: Validate that nginx is installed
       uri:  url=http://localhost method=HEAD
 
-    - name: create static root dir
-      file: path=/var/www/workshop state=directory owner=www-data group=www-data recurse=true
+    - name: Create static root dir
+      file: path=/var/www/workshop state=directory owner=www-data group=www-data
       sudo: yes
     
-    - name: copy static HTML files to root dir
+    - name: Copy static HTML files to root dir
       copy: src=resources/index.html dest=/var/www/workshop owner=www-data group=www-data
       sudo: yes
 ```
@@ -36,6 +36,8 @@ Man, this is Geocities all over again! The excitement!!1
 #### So what did we do here?
 
 We told Ansible to copy a static file from our repo to the server.
+
+We also told Ansible to ensure the permissions on the copied file so Nginx will be able to access them.
 
 BUT WAIT...
 
@@ -45,19 +47,19 @@ Let's update the Nginx site definition with our own (and remove the default).
 
 ```
 ...
-    - name: disable default site in Nginx
+    - name: Disable default site in Nginx
       file: path=/etc/nginx/sites-enabled/default state=absent
       sudo: yes
 
-    - name: Add Our own Nginx site
+    - name: Add our own nginx site
       copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner-www-data group=www-data
       sudo: yes
 
-    - name: symlink our nginx site
+    - name: Symlink our nginx site
       file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
       sudo: yes
 
-    - name: reload nginx service
+    - name: Reload nginx service
       service: name=nginx state=reloaded
       sudo: yes
 ```
@@ -70,7 +72,7 @@ We copied or own Nginx site definition using the `copy` module, made sure it was
 
 Indeed, let's spice things up shall we?
 
-Let's make the Nginx configuration DYNAMAGIC!
+Let's make the Nginx configuration **DYNAMAGIC**!
 
 We'll replace the copy task we just wrote with this nifty snippet that uses the `template` module:
 
@@ -81,13 +83,13 @@ We'll replace the copy task we just wrote with this nifty snippet that uses the 
       sudo: yes
 ```
 
-The `template` module uses Jinja to render the template.
+The `template` module uses Jinja (A python template engine that rocks) to render the template.
 
 #### WAIT WAT
 
 Let's run the playbook again.
 
-Now we `curl`, Justin style:
+Now we `curl`, *Justin style*™:
 
 ```
 curl http://127.0.0.1:8083/answer
@@ -118,7 +120,7 @@ Let's look at the template used in that nifty snippet:
 
 Nope, what you're seeing here is a Jinja template, that uses Ansible variables.
 
-The `ansible_date_time` variable is injected by ansible, which we use to calculate the deployment time.
+The `ansible_date_time` variable is injected by Ansible, which we use to calculate the deployment time.
 
 The second part is more interesting, here we use the `magic_answer` variable, and we pass that to a Jinja filter called `default`, that will replace the value with the parameter if the variable is null.
 
@@ -133,6 +135,8 @@ CURL TIME:
 ```
 curl http://127.0.0.1:8083/answer
 ```
+
+There's loads of Jinja filters available,from string manipulations to list comprehensions, and guess what, they're extendable! You can write the yourself in Python (FTW™).
 
 #### MIND BLOWN.
 

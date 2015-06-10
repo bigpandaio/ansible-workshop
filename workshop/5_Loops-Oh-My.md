@@ -13,7 +13,7 @@ Ansible helps us here, by giving us the option of doing loops using the `with_it
 ```
 ...
   tasks:
-    - name: install ALL THE PACKAGES
+    - name: Install ALL THE PACKAGEz on Ubuntu/Debian
       apt:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "Debian"
@@ -21,7 +21,7 @@ Ansible helps us here, by giving us the option of doing loops using the `with_it
         - nginx
         - cowsay
 
-    - name: install nginx
+    - name: Install ALL THE PACKAGEZ on RedHat/CentOs
       yum:  name={{ item }} state=present
       sudo: yes
       when: ansible_os_family == "RedHat"

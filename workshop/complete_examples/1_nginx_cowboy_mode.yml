@@ -2,9 +2,9 @@
 - name: Initial playbook
   hosts: all
   tasks:
-    - name: install nginx
+    - name: Install nginx
       apt: name=nginx state=present
       sudo: yes
 
-    - name: validate that nginx is installed
+    - name: Validate that nginx is installed
       uri: url=http://localhost method=HEAD

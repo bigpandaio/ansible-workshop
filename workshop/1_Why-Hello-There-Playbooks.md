@@ -39,7 +39,7 @@ ok: [ansible-workshop-vagrant]
 
 ```
 
-If that's installed (and it should be!), then ansible uses that for outputting playbook tasks.
+If that's installed (and it should be!), then Ansible uses that for outputting playbook tasks.
 
 If you for some strange reason don't want to bless your eyes with this amazing cow, do the following:
 
