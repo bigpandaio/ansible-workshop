@@ -62,7 +62,7 @@ Simply explained, running playbooks again **SHOULD NOT BREAK THING**s.
 
 And if possible, should only run if needed.
 
-You probably noticed in the end of the Ansible output, there's a summary of changed|ok|failed items.
+You probably noticed in the end of the Ansible output, there's a summary of changed|ok|unreachable|failed items.
 
 As a matter of principle, things which don't need to run, shouldn't.
 
@@ -89,18 +89,23 @@ E.g
       file: path=/etc/nginx/sites-enabled/default state=absent
       sudo: yes
 
-    - name: Add our own nginx site
-      copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner-www-data group=www-data
+    - name: Generate our own nginx site
+      template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner-www-data group=www-data
       sudo: yes
+      notify:
+        - Reload nginx
 
     - name: Symlink our nginx site
       file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
       sudo: yes
       notify:
-        - reload nginx
+        - Reload nginx
 
   handlers:
-    - name: reload nginx
-      service: name=nging state=reloaded
+    - name: Reload nginx
+      service: name=nginx state=reloaded
+      sudo: yes
 
 ```
+
+
