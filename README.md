@@ -54,10 +54,14 @@ Prerequisites:
   If you're coming to the meetup, speed things up by running this before you come:
 
   ```
-  Vagrant box add 'ubuntu/trusty64' https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+  vagrant box add 'ubuntu/trusty64' https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   ```
 
-- [Ansible](http://docs.ansible.com/intro_installation.html)
+- [Ansible](http://docs.ansible.com/intro_installation.html) 
+
+  ```
+  (sudo) pip install ansible
+  ```
 
 - Then:
 
