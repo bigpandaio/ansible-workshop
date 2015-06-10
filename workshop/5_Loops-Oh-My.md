@@ -52,7 +52,7 @@ We can even DRY that up even more by defining the packages as a local variable:
       with_items: packages_to_install
 ```
 
-#### Ansible, like Python, have it's on Zen.
+#### Ansible, like Python, have it's own Zen.
 
 One of the most important things in Ansible is Idempotency.
 
