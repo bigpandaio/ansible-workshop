@@ -52,4 +52,20 @@ We can even DRY that up even more by defining the packages as a local variable:
       with_items: packages_to_install
 ```
 
+#### Ansible, like Python, have it's on Zen.
 
+One of the most important things in Ansible is Idempotency.
+
+![IDEMPOTENCY](http://cdn.meme.am/instances2/500x/178717.jpg)
+
+Simply explained, running playbooks again **SHOULD NOT BREAK THING**s.
+
+And if possible, should only run if needed.
+
+You probably noticed in the end of the Ansible output, there's a summary of changed|ok|failed items.
+
+As a matter of principle, things which don't need to run, shouldn't.
+
+An example given in our own case, we don't need to reload Nginx if we don't change any content there.
+
+This is achived using handlers, which are basically task who occur only if the tasks that trigger the handler has changed.

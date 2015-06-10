@@ -122,7 +122,7 @@ Nope, what you're seeing here is a Jinja template, that uses Ansible variables.
 
 The `ansible_date_time` variable is injected by Ansible, which we use to calculate the deployment time.
 
-The second part is more interesting, here we use the `magic_answer` variable, and we pass that to a Jinja filter called `default`, that will replace the value with the parameter if the variable is null.
+The second part is more interesting, here we use the `magic_answer` variable, and we pass that to a Jinja filter called `default`, that will replace the value with the parameter if the variable is undefined.
 
 Let's run the playbook again, and override our `magic_answer` variable:
 
