@@ -29,7 +29,7 @@ Man, this is Geocities all over again! The excitement!!1
       sudo: yes
     
     - name: Copy static HTML files to root dir
-      copy: src=resources/index.html dest=/var/www/workshop owner=www-data group=www-data
+      copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
       sudo: yes
 ```
 
