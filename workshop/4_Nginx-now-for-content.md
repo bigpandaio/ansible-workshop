@@ -29,7 +29,7 @@ Man, this is Geocities all over again! The excitement!!1
       sudo: yes
     
     - name: Copy static HTML files to root dir
-      copy: src=resources/index.html dest=/var/www/workshop owner=www-data group=www-data
+      copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
       sudo: yes
 ```
 
@@ -81,7 +81,7 @@ We'll replace the copy task we just wrote with this nifty snippet that uses the 
 ```
 ...
     - name: Generate our own nginx site
-      template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner-www-data group=www-data
+      template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner=www-data group=www-data
       sudo: yes
 ```
 
