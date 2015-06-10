@@ -23,3 +23,9 @@ In Ansible terms, that's one Playbook, running two Roles:
 
 1. Nginx
 2. App, which is dependant on Nginx
+
+#### Show me some!
+
+Well that's for the next Ansible Hands on Workshop!
+
+But you can peek a bit at [our examples](https://github.com/bigpandaio/ansible-workshop/tree/07-roles-dep/ansible) or the official [Ansible examples](https://github.com/ansible/ansible-examples)
