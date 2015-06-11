@@ -48,7 +48,7 @@
 
 </pre>
 
-Prerequisites:
+Prerequisites (To be installed on your laptop):
 
 - [Vagrant](https://www.vagrantup.com/downloads.html)  
   If you're coming to the meetup, speed things up by running this before you come:
