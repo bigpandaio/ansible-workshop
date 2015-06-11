@@ -24,6 +24,3 @@ ansible ansible-workshop-vagrant -a '/bin/echo Hello there!'
 #### But then, that's not very *AUTOMATED*??
 
 True dat, see [the next step](./1_Why-Hello-There-Playbooks.md)
-
-
-**NOTE:** *This assumes that you've run `bootstrap.sh`*

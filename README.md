@@ -68,10 +68,19 @@ Prerequisites:
   ```
   git clone -b noob-workshop https://github.com/bigpandaio/ansible-workshop
   cd ansible-workshop
-  ./bootstrap.sh
+  vagrant up
+  cp ansible/hosts{.template,}
   ```
 
-## So I've cloned the repo, now what?
+  run `vagrant ssh-config` and use the values from the output to replace the `<PLACEHOLDERS>` in `ansible/hosts`
+
+  Then, to check that it works:
+
+  ```
+  ansible all -m ping
+  ```
+
+## Now what?
 
 See the `workshop` directory, you'll find a series of markdown steps that we'll be going through at the workshop, let's start with [step 0](./workshop/0_AdHoc-Commands.md)
 
