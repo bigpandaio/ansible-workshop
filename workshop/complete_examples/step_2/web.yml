@@ -1,0 +1,6 @@
+---
+- name: Web Server
+  hosts: tag_role_web:{{ ('&' + limit) | default('') }}
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes

@@ -1,0 +1,5 @@
+/*.yml
+dev/*_vars
+roles/
+.vagrant/
+.DS_Store

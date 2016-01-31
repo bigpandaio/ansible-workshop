@@ -1,0 +1,24 @@
+{% for app, port in apps.iteritems() %}
+upstream {{ app }}-cluster {
+{% for node in app_servers %}
+  server {{ node }}:{{ port }} max_fails=3 fail_timeout=10s;
+{% endfor %}
+  keepalive 16;
+}
+{% endfor %}
+
+server {
+  listen 80;
+
+{% for app in apps.iterkeys() %}
+  location /{{ app }} {
+    proxy_pass http://{{ app }}-cluster/;
+    proxy_redirect   off;
+    proxy_set_header Host            $host;
+    proxy_set_header X-Real-IP       $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+{% endfor %}
+  #auth_basic            "Restricted";
+  #auth_basic_user_file  /etc/nginx/auth-passwd;
+}

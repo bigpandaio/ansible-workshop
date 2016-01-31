@@ -1,0 +1,6 @@
+---
+- name: App Server
+  hosts: tag_role_app:{{ ('&' + limit) | default('') }}
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes

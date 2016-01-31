@@ -1,0 +1,7 @@
+---
+- name : Debug Var
+  hosts: all
+  vars:
+    test_var: 'at playbook'
+  roles:
+    - varz
