@@ -1,2 +1,2 @@
 ---
-#test_var: 'at host_vars/web'
+test_var: 'at host_vars/web'
