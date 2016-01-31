@@ -70,7 +70,7 @@ Prerequisites (To be installed on your laptop):
   ```
   git clone -b apprentice-workshop https://github.com/bigpandaio/ansible-workshop
   cd ansible-workshop
-  bootstrap.sh
+  vagrant up
   ```
 
   Then, to check that it works:
@@ -81,7 +81,7 @@ Prerequisites (To be installed on your laptop):
 
 ## Now what?
 
-See the `workshop` directory, you'll find a series of markdown steps that we'll be going through at the workshop, let's start with [step 0](./workshop/0_AdHoc-Commands.md)
+See the `workshop` directory, you'll find a series of markdown steps that we'll be going through at the workshop, let's start with [step 0](./workshop/0_n00b_summary_and_wanted_results.md).
 
 
 *Enjoy!*
