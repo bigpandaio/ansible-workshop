@@ -1,0 +1,3 @@
+---
+dependencies:
+- { role: app, tags: ['app', 'elephant'], cow_app_port: 3001, cow_app_name: 'elephant', cow_app_cow: 'elephant' }

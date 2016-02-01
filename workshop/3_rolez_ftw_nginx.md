@@ -39,7 +39,7 @@ Same as templates, just not dynamic.
 
 This is where you'd define inheritance if existing.
 
-By default, the `main.yml` file will be loaded by default by Ansible (except for **files** and **templates**).
+**NOTE:** By default, for each of these folders, the `main.yml` file will be loaded by default by Ansible (except for **files** and **templates**).
 
 ### Fine fine, let's get to work
 
@@ -61,11 +61,11 @@ We now have:
 
 ### How do we use this role?
 
-We'll delete the previous `apt` task and add the following to our `web.yml`:
+Well, we deleted the previous `apt` task and added the following to our `web.yml`:
 
 ```yaml
 - name: Web Server
-  hosts: tag_role_web:{{ ('&' + limit) | default('') }}
+  hosts: tag_role_web:{{ ('&' + limit) }}
   roles:
     - nginx
 ```

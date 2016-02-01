@@ -12,16 +12,16 @@ cp ./workshop/complete_examples/step_4/app.yml ./
 - An upstart template
 - Default variables to be overridden
 - Application Variables
-- Tasks that download `http-cow` and generates the service
+- Tasks that download `http-cow` (!) and generates the service that runs this AMAZING server
 - Rewrote playbook to use roles
 
 ### How do we use this role?
 
-As before in the `web.yml`, we'll do the same with `app.yml` by deleting the previous `apt` task and adding:
+As before in the `web.yml`, we did the same with `app.yml` by deleting the previous `apt` task and adding:
 
 ```yaml
 - name: App Server
-  hosts: tag_role_app:{{ ('&' + limit) | default('') }}
+  hosts: tag_role_app:{{ ('&' + limit) }}
   roles:
     - app
 ```

@@ -8,19 +8,20 @@ We'll refactor our `app` role, to be an abstract role, getting the app name, por
 
 ```bash
 cp -r ./workshop/complete_examples/step_9/roles/{cow,elephant} ./roles
-cp ./workshop/complete_examples/step_9/roles/nginx/defaults/main.html ./roles/nginx/defaults/main.yml
+cp ./workshop/complete_examples/step_9/roles/nginx/defaults/main.yml ./roles/nginx/defaults/main.yml
 cp ./workshop/complete_examples/step_9/app.yml ./
 ```
 
 #### Ship It!
 
 ```bash
-ansible-playbook ./deploy.yml --skip-tags infra
+ansible-playbook ./deploy.yml
+curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
 ```
 
-Then: `open http://localhost:8083` (or `gnome-open` if you're on Ubuntu with Gnome).
-
 LaBoomz, we now have an elephant app!
+
+_Bonus_: `open http://localhost:8083` (or `gnome-open` if you're on Ubuntu with Gnome).
 
 ### Hmm, what was the checklist we talked about before?
 
@@ -43,7 +44,10 @@ Then
 
 ```bash
 vagrant up app-2
-ansible-playbook ./deploy.yml #no skip tags, new server!
+ansible-playbook ./deploy.yml
+#no skip tags, new server!
+ansible tag_role_app -a 'curl -s localhost:3000'
+ansible tag_role_app -a 'curl -s localhost:3001'
 ```
 
 That's it!

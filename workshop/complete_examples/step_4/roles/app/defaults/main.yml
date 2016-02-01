@@ -1,0 +1,4 @@
+---
+cow_app_port: 3000
+cow_app_name: 'cow'
+cow_app_cow:  'default'

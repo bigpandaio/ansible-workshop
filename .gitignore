@@ -1,6 +1,6 @@
 /*.yml
 dev/*_vars
-roles/
+/roles/
 .vagrant/
 .DS_Store
 .ansible-vault-pass

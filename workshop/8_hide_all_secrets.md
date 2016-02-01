@@ -2,11 +2,11 @@
 
 Now, if this amazing cow app was deployed in production, we should probably secure it in some way.
 
-To keep it simple in this workshop, we'll keep it simple by using **nginx** basic auth.
+To keep it simple in this workshop, we'll keep it simple by using **nginx** basic authentication.
 
 ### Show me the path to security
 
-To add basic auth, we'll need to change the **nginx** role.
+To add basic authentication, we'll need to change the **nginx** role.
 
 ```bash
 cp -r ./workshop/complete_examples/step_8/roles/nginx ./roles
@@ -20,13 +20,13 @@ ansible-playbook ./deploy.yml --tags web
 
 And we'll test the authentication:
 ```bash
-curl localhost:8083/cow
+curl -s localhost:8083/cow
 ```
 
 #### Yaay! it didn't work!
 
 ```bash
-curl 'ansible:ohnoez@localhost:8083/cow'
+curl -s 'ansible:ohnoez@localhost:8083/cow'
 ```
 
 That's better.
@@ -45,7 +45,8 @@ To use it you need to create a password for encrypting and decrypting:
 
 
 ```bash
-echo $RANDOM > ./.ansible-vault-pass #so secure so much secure, wow
+echo $RANDOM > ./.ansible-vault-pass
+#so secure so much secure, wow
 ```
 
 Then create a _"vaulted"_ file, and add the `webserver_password` variable:
@@ -54,7 +55,7 @@ Then create a _"vaulted"_ file, and add the `webserver_password` variable:
 ansible-vault create --vault-password-file=./.ansible-vault-pass dev/group_vars/all/vault
 ```
 
-Since Ansible automagically includes all files in `group_vars/all` if it's a directory, the vaulted file will also be include.
+Since Ansible automagically includes all files in `group_vars/all/` if it's a directory, the vaulted file will also be include.
 
 Awsmz, let's run it:
 
@@ -77,8 +78,8 @@ ansible-playbook ./deploy.yml --vault-password-file=./.ansible-vault-pass --tags
 And to test if it actually worked:
 
 ```bash
-curl 'ansible:ohnoez@localhost:8083/cow'
-curl 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
+curl -s 'ansible:ohnoez@localhost:8083/cow'
+curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
 ```
 
 Adding `--vault-password-file` to each Ansible command is annoying, but solvable:

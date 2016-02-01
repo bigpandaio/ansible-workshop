@@ -1,0 +1,6 @@
+---
+apps:
+  cow: 3000
+app_servers: "{{ groups.app | default([]) }}"
+webserver_user: "ansible"
+webserver_password: "ohnoez"

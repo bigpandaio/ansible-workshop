@@ -7,8 +7,8 @@ Although Ansible has a very defined order of variable loading, remembering isn't
 We'll try it out with a small exercise:
 
 ```bash
-cp -r ./workshop/complete_examples/step_7/*_vars ./dev/
-cp -r ./workshop/complete_examples/step_7/roles/vars ./roles/
+cp -r ./workshop/complete_examples/step_7/dev/*_vars ./dev/
+cp -r ./workshop/complete_examples/step_7/roles/varz ./roles/
 cp ./workshop/complete_examples/step_7/varz.yml ./
 ```
 
@@ -17,6 +17,8 @@ Run this with:
 ```bash
 ansible-playbook ./varz.yml
 ```
+
+All this role does is to print out the variable `test_var`.
 
 We can also pass that variable as a parameter to the playbook:
 

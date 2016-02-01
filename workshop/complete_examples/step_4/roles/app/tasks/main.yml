@@ -1,0 +1,40 @@
+---
+- name: "Test if service exists"
+  stat: path=/etc/init/{{ cow_app_name }}
+  register: service_exists
+
+- name: "Stop service when exists"
+  service: name={{ cow_app_name }} state=stopped
+  when: service_exists.stat.exists
+  sudo: yes
+
+- name: Install Cowsay
+  apt:  name=cowsay state=present
+  sudo: yes
+
+#ansible 2.0
+#- name: Download and unarchive http-cow
+#  unarchive: src="https://github.com/erikzaadi/http-cowsay/releases/download/v0.1/http-cow.tar.gz" dest="{{ cow_app_script_path | dirname }}" owner=root group=root mode=755
+#  sudo: yes
+#ansible 2.0 end
+
+#pre ansible 2.0
+- name: "Download http-cow archive"
+  get_url: url="https://github.com/erikzaadi/http-cowsay/releases/download/v0.1/http-cow.tar.gz" dest=/tmp
+  #checksum ansible 2.0
+
+- name: Unarchive http-cow
+  unarchive: src="/tmp/http-cow.tar.gz" dest="{{ cow_app_script_path | dirname }}" owner=root group=root mode=755 copy=no
+  sudo: yes
+#pre ansible 2.0 end
+
+- name: "Generate service template"
+  template: src=cow-app-upstart.conf.template dest="/etc/init/{{ cow_app_name }}.conf" mode=755 owner=root group=root
+  sudo: yes
+
+- name: "Start service"
+  service: name="{{ cow_app_name }}" state=started
+  sudo: yes
+
+- name: "Health check"
+  uri: url="http://localhost:{{ cow_app_port }}"

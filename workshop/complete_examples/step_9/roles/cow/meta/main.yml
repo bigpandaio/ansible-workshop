@@ -1,0 +1,3 @@
+---
+dependencies:
+- { role: app, tags: ['app', 'cow'] }

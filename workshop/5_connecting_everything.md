@@ -26,6 +26,7 @@ Although `private_ip` is a quick hack we did in our dynamic host script, other p
 ### Test it!
 
 ```bash
+ansible-playbook ./hosts.yml
 ansible tag_role_web -a 'curl -s app-1:3000'
 ```
 
@@ -36,7 +37,9 @@ Man that cow is awesome.
 Let's update the **nginx** role to proxy requests to our backend app server.
 
 ```bash
-cp -r workshop/complete_examples/step_5/nginx ./roles/nginx
+cp -r workshop/complete_examples/step_5/roles/nginx ./roles/
+ansible-playbook ./web.yml
+ansible tag_role_web -a 'curl -s localhost/cow'
 ```
 
 What we've changed here is the **nginx** template:
@@ -56,7 +59,7 @@ upstream {{ app }}-cluster {
 
 TODO: MEMEZ
 
-Let's rewind a bit and have a looksie in our new `defaults/main.yml`
+Let's rewind a bit and have a looksie in our new `roles/nginx/defaults/main.yml`
 
 ```yaml
 apps:
@@ -75,6 +78,7 @@ We then create a new location per app, `proxy_pass`-ing to the app-cluster we cr
 Basically this means that if we were to add MOAR apps or MOAR app servers, our playbooks will still work.
 
 TODO: PAR EXCELLANCE MEMEZ
+
 
 ### This is all very exciting, but...
 
