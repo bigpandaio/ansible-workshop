@@ -30,6 +30,8 @@ ansible-playbook ./varz.yml -e test_var=ZOMG32
 
 Comment out the definition of `test_var` according the message you get when running, RINSE, REPEAT
 
+![RINSE, REPEAT](http://cdn.gifbay.com/2013/04/rinse_and_repeat-44760.gif)
+
 _THIS WILL TAKE A WHILE!!1_
 
 Then run again with passing a parameter.

@@ -25,6 +25,8 @@ ansible-playbook deploy.yml --skip-tags infra --tags app
 
 ### SO MUCH SPEED SO MUCH DOGE
 
+![NOTHING CAN STOP ME!](http://i.imgur.com/D1snM4J.gif)
+
 So now we have a single point for our deployments. We can now use this script via ChatOps or whatever the cool kids are doing.
 
 ### Tis' cool. Where's the trap?
@@ -32,5 +34,6 @@ So now we have a single point for our deployments. We can now use this script vi
 The one pitfall you must prepare yourselves for is:
 
 **WHICH VARIABLE OVERRIDES WHICH!?!?**
+![WHICH VARIABLE OVERRIDES WHICH!](https://i.imgflip.com/ye9wp.jpg)
 
 We'll tackle that in [variables everywhere](./7_variables_everywhere.md).

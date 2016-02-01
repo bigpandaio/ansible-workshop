@@ -32,10 +32,12 @@ cp ./workshop/complete_examples/step_9/app.yml ./
 
 ```sh
 ansible-playbook ./deploy.yml
-curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
+curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/elephant'
 ```
 
 LaBoomz, we now have an elephant app!
+
+![SEE ME IN THE ROOM](https://i.imgflip.com/ye9h7.jpg)
 
 _Bonus_: `open http://localhost:8083` (or `gnome-open` if you're on Ubuntu with Gnome).
 
@@ -75,6 +77,6 @@ Do yourself a favor, lint your **YAML**.
 
 While you're at it, you can also lint your Ansible **YAML** using [ansible-lint](https://github.com/willthames/ansible-lint).
 
-WHITESPACESEVERYWHEREMEME
+![WHITESPACES EVERYWHERE](https://i.imgflip.com/ye9b3.jpg)
 
 ### That's it folks!

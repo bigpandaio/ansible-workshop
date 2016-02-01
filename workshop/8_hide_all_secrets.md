@@ -31,9 +31,9 @@ curl -s 'ansible:ohnoez@localhost:8083/cow'
 
 That's better.
 
-Or is it?
+_Or is it_?
 
-IDONTALWAYSSECUREPASSWORDINGIT
+![SECURELY COMMITTED CLEAR TEXT](https://i.imgflip.com/ye9jg.jpg)
 
 We have a password hard coded into git.
 

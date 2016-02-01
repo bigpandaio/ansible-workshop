@@ -36,6 +36,8 @@ ansible role_web -a 'curl -s app-1:3000'
 
 Man that cow is awesome.
 
+![ZE LA FAN!](http://i.imgur.com/OWTWH8G.gif)
+
 ### Ok that's fine, there's communication between the machines
 
 Let's update the **nginx** role to proxy requests to our backend app server.
@@ -61,7 +63,7 @@ upstream {{ app }}-cluster {
 
 ### WAT DA DUCKING DUCK?!?!?
 
-TODO: MEMEZ
+![DUCKEY FUNK!](https://media.giphy.com/media/b9QBHfcNpvqDK/giphy.gif)
 
 Let's rewind a bit and have a looksie in our new `roles/nginx/defaults/main.yml`
 
