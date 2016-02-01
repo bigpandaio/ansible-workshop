@@ -34,6 +34,7 @@ So now we have a single point for our deployments. We can now use this script vi
 The one pitfall you must prepare yourselves for is:
 
 **WHICH VARIABLE OVERRIDES WHICH!?!?**
+
 ![WHICH VARIABLE OVERRIDES WHICH!](https://i.imgflip.com/ye9wp.jpg)
 
 We'll tackle that in [variables everywhere](./7_variables_everywhere.md).
