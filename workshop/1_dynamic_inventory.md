@@ -58,7 +58,7 @@ This funky syntax is a bit like configuration files.
 
 The `[name]` syntax means group names. Simply un-bracketed `name` is a single host.
 
-Using `[name:children]` means that all hosts that follow are a part of that group (can be groups as well).
+Using `[name:children]` means that all groups following are children of that group.
 
 ### Ok Ok, so Ansible now knows our host, what now?
 

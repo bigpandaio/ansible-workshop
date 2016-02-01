@@ -1,6 +1,6 @@
 ---
 - name: Web Server
-  hosts: role_web:{{ ('&' + limit) }}
+  hosts: role_web:{{ ('&' + limit) | default('') }}
   tasks:
     - name: Update apt cache
       apt: update_cache=yes

@@ -15,19 +15,19 @@ ansible-playbook app.yml
 
 ### ZOMG WE CAN APT SOURCES
 
-You might have noticed that we didn't pass the `-i inventory` parameter to `ansible-playbook`, this is because we defined that as a default in `ansible.cfg`.
+You might have noticed that we didn't pass the `-i inventory` parameter to `ansible-playbook`, this is because we defined the inventory name in `ansible.cfg`.
 
 If we peek at the playbooks we see some **Jinja** magic:
 
 ```yaml
 - name: App Server
-  hosts: role_app:{{ ('&' + limit) }}
+  hosts: role_app:{{ ('&' + limit) | default('') }}
   tasks:
     - name: Update apt cache
       apt: update_cache=yes
 ```
 
-What we did here was allow the **limit** parameter to be passed, this ensures that even if this playbook is included and not ran directly, the **limit** will be respected.
+What we did here was allow the **limit** variable to be passed (in addition to Ansible's built in `--limit`), this ensures that even if this playbook is included and not ran directly, you can pass the limit in the include.
 
 If you're not familiar with **limit**, it's a parameter which allows us to , ahem, limit the playbook's target hosts.
 
