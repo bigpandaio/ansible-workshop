@@ -41,7 +41,7 @@ ansible role_api -a 'whoami'
 
 Where did that `role_` come from?
 
-In [our static](../dev/static) file we matched group names to tag roles, a typical convention used across providers.
+In [our static](../dev/static) file we matched group names to roles, a typical convention used across providers.
 
 ```
 [web]
