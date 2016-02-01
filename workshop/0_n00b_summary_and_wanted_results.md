@@ -28,8 +28,8 @@ Runs App Service(s)
 ### Checklist:
 
 - [ ] Should be easy to deploy app changes
-- [ ] Should be easy to add new servers
 - [ ] Should be easy to add new Apps (services)
+- [ ] Should be easy to add new servers
 
 #### Let's get on with it.
 
