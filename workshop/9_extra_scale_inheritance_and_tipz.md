@@ -56,5 +56,3 @@ Do yourself a favor, lint your **YAML**.
 While you're at it, you can also lint your Ansible **YAML** using [ansible-lint](https://github.com/willthames/ansible-lint).
 
 WHITESPACESEVERYWHEREMEME
-
-linting
