@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 """
 Vagrant external inventory script. Automatically finds the IP of the booted vagrant vm(s), and
-returns it under the host groups according to hostname
-
-E.g.
-    web will be in the web hostgroup
-    api-1 will be in the api hostgroup
+returns it under the host group 'vagrant'
 
 Example Vagrant configuration using this script:
 
@@ -51,12 +47,11 @@ except:
     import simplejson as json
 
 _group = 'vagrant'  # a default group
-host_to_group_re = '(.*?)(?:-[0-9]+)?$'
-
 _ssh_to_ansible = [('user', 'ansible_ssh_user'),
                    ('hostname', 'ansible_ssh_host'),
                    ('identityfile', 'ansible_ssh_private_key_file'),
                    ('port', 'ansible_ssh_port')]
+host_to_group_re = '(.*?)(?:-[0-9]+)?$' #host name to group convention (Name: <BLA>-N => Group: <BLA>)
 
 # Options
 # ------------------------------
@@ -117,9 +112,11 @@ if options.list:
     meta = defaultdict(dict)
     groups = defaultdict(dict)
 
+    groups[_group] = []
+
     for host in ssh_config:
         meta['hostvars'][host] = ssh_config[host]
-        #a wee bit hack to set groups according to host name convention
+        # set groups according to host name convention (see comment about `host_to_group_re`)
         host_group = ''
         match = re.match(host_to_group_re, host)
         if match is None:
@@ -129,7 +126,9 @@ if options.list:
 
         if groups.get(host_group, None) is None:
             groups[host_group] = []
-        groups[host_group] += [host]
+
+        groups[_group].append(host)
+        groups[host_group].append(host)
 
     groups['_meta'] = meta
 
