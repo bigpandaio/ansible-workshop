@@ -2,7 +2,7 @@
 
 One of the biggest got'cha with Ansible is when you're using a variable that suddenly has a value you didn't expect.
 
-Although Ansible has a very defined order of variable loading, remembering isn't easy.
+Although Ansible has a very defined order of variable loading, remembering that order isn't easy.
 
 We'll try it out with a small exercise:
 

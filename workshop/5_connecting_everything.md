@@ -16,9 +16,13 @@ What we're doing in this playbook is simple:
 - Add new IP at other machines
 
 Notice that the playbooks hosts is `all`, and we're limiting the task to not run on themselves.
-The tasks themselves run iterate on `groups.all`, which is the same ass the playbook hosts, we could also have used `play_hosts` here, which is another Ansible magic variable that does this.
+
+The tasks themselves run iterate on `groups.all`, which is the same ass the playbook hosts.
+
+We could also have used `play_hosts` here, which is another Ansible magic variable that does this (albeit limited to current play, so if we run with `serial=1`, `play_hosts` will be populated per serial run).
 
 Furthermore, we're accessing `hostvars`, which our dynamic host script generates for us.
+
 Although `private_ip` is a quick hack we did in our dynamic host script, other providers such as AWS have similar features, E.g. `private_ip` would be `ec2_private_ip_address`.
 
 **NOTE:** In other providers you might need to open the port between the hosts.
