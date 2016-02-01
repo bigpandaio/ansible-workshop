@@ -28,7 +28,11 @@ ansible-playbook ./varz.yml -e test_var=ZOMG32
 
 ### Hmm, where, what, how
 
-Comment out the definition of `test_var` according the message you get when running, RINSE, REPEAT
+We've planted `test_var` definitions ALL OVER THE PLACE.
+
+Each one contains a hint to where the file is.
+
+Comment out the definition of `test_var` according the message you get when running, UNT ZEN: RINSE, REPEAT!!1
 
 ![RINSE, REPEAT](http://cdn.gifbay.com/2013/04/rinse_and_repeat-44760.gif)
 
