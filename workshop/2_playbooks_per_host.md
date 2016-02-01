@@ -29,6 +29,16 @@ If we peek at the playbooks we see some **Jinja** magic:
 
 What we did here was allow the **limit** parameter to be passed, this ensures that even if this playbook is included and not ran directly, the **limit** will be respected.
 
+If you're not familiar with **limit**, it's a parameter which allows us to , ahem, limit the playbook's target hosts.
+
+Say that we had 5 app servers (app-1 to app-5), and we only wanted to run `app.yml` on one of them:
+
+```sh
+ansible-playbook ./web.yml --limit app-1
+```
+
+You can use your role groups, wild cards and more patterns, see [here](http://docs.ansible.com/ansible/intro_patterns.html) for more details.
+
 ### Fine, we added one task, how will it look with hundreds of tasks?
 
 Well, we could add everything that has to do with **nginx** to the `web.yml` playbook, but that wouldn't be very elegant would it?
