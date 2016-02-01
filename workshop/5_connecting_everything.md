@@ -6,7 +6,7 @@ Let's get them to know each other by updating their `/etc/hosts`.
 
 Copy the file `workshop/complete_examples/step_5/hosts.yml` to the root directory:
 
-```bash
+```sh
 cp workshop/complete_examples/step_5/hosts.yml ./
 ```
 
@@ -25,7 +25,7 @@ Although `private_ip` is a quick hack we did in our dynamic host script, other p
 
 ### Test it!
 
-```bash
+```sh
 ansible-playbook ./hosts.yml
 ansible tag_role_web -a 'curl -s app-1:3000'
 ```
@@ -36,7 +36,7 @@ Man that cow is awesome.
 
 Let's update the **nginx** role to proxy requests to our backend app server.
 
-```bash
+```sh
 cp -r workshop/complete_examples/step_5/roles/nginx ./roles/
 ansible-playbook ./web.yml
 ansible tag_role_web -a 'curl -s localhost/cow'

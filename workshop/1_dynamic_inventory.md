@@ -18,7 +18,7 @@ Do a `vagrant up` if you haven't already.
 
 Run:
 
-```bash
+```sh
 ./dev/hosts --list
 #optionally, pipe to jq
 ./dev/hosts --list | jq '.' #jq == EPICNESS
@@ -32,7 +32,7 @@ In addition, they're also grouped, the relevant groups for use are **web** and *
 
 #### We can now test it using Ansible ad-hoc commands
 
-```bash
+```sh
 ansible tag_role_web -a 'whoami'
 ansible tag_role_api -a 'whoami'
 ```

@@ -2,7 +2,7 @@
 
 ### As with the **nginx** role, we'll save some time by copying some examples:
 
-```bash
+```sh
 cp -r ./workshop/complete_examples/step_4/roles/app ./roles/
 cp ./workshop/complete_examples/step_4/app.yml ./
 ```
@@ -34,7 +34,7 @@ ansible-playbook ./app.yml
 
 ### And to test it: 
 
-```bash
+```sh
 ansible tag_role_app -a 'curl -s localhost:3000'
 ```
 

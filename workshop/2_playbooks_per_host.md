@@ -2,13 +2,13 @@
 
 Let's create two playbooks, one for each host type we have.
 
-```bash
+```sh
 cp ./workshop/complete_examples/step_2/*.yml ./
 ```
 
 Run it with:
 
-```bash
+```sh
 ansible-playbook web.yml
 ansible-playbook app.yml
 ```
@@ -27,9 +27,9 @@ If we peek at the playbooks we see some **Jinja** magic:
       apt: update_cache=yes
 ```
 
-What we did here was allow the limit parameter to be passed, this ensures that even if this playbook is included and not ran directly, the limit will be respected.
+What we did here was allow the **limit** parameter to be passed, this ensures that even if this playbook is included and not ran directly, the **limit** will be respected.
 
-### Fine, we added one task, how will it look with hundreds?
+### Fine, we added one task, how will it look with hundreds of tasks?
 
 Well, we could add everything that has to do with **nginx** to the `web.yml` playbook, but that wouldn't be very elegant would it?
 

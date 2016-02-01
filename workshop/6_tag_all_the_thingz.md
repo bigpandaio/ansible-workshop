@@ -1,6 +1,6 @@
 ## Bag'Em and Tag'Em
 
-```bash
+```sh
 cp ./workshop/complete_examples/step_6/deploy.yml ./
 cp ./workshop/complete_examples/step_6/roles/nginx/tasks/main.yml ./roles/nginx/tasks/
 cp ./workshop/complete_examples/step_6/roles/app/tasks/main.yml ./roles/app/tasks/
@@ -19,7 +19,7 @@ And the other tasks were updated with tags accordingly.
 
 This allows us to run this playbook and specify which tag we want to deploy:
 
-```bash
+```sh
 ansible-playbook deploy.yml --skip-tags infra --tags app
 ```
 

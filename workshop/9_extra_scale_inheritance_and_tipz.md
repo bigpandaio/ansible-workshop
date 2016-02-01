@@ -6,7 +6,7 @@ A supercool feature of Ansible is **Inheritance**.
 
 We'll refactor our `app` role, to be an abstract role, getting the app name, port and cow type (!) as parameters:
 
-```bash
+```sh
 cp -r ./workshop/complete_examples/step_9/roles/{cow,elephant} ./roles
 cp ./workshop/complete_examples/step_9/roles/nginx/defaults/main.yml ./roles/nginx/defaults/main.yml
 cp ./workshop/complete_examples/step_9/app.yml ./
@@ -14,7 +14,7 @@ cp ./workshop/complete_examples/step_9/app.yml ./
 
 #### Ship It!
 
-```bash
+```sh
 ansible-playbook ./deploy.yml
 curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
 ```
@@ -42,7 +42,7 @@ Uncomment the following part in the `Vagrantfile`:
 
 Then
 
-```bash
+```sh
 vagrant up app-2
 ansible-playbook ./deploy.yml
 #no skip tags, new server!

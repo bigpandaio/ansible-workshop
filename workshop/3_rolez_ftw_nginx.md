@@ -43,9 +43,9 @@ This is where you'd define inheritance if existing.
 
 ### Fine fine, let's get to work
 
-To keep things simple, We'll copy then **nginx** from the previous workshop:
+To keep things simple, We'll copy the **nginx** tasks from the previous workshop, organized in a role:
 
-```bash
+```sh
 cp -r ./workshop/complete_examples/step_3/roles ./
 cp ./workshop/complete_examples/step_3/web.yml ./
 ```

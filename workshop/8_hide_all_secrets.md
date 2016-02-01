@@ -8,24 +8,24 @@ To keep it simple in this workshop, we'll keep it simple by using **nginx** basi
 
 To add basic authentication, we'll need to change the **nginx** role.
 
-```bash
+```sh
 cp -r ./workshop/complete_examples/step_8/roles/nginx ./roles
 ```
 
 Then deploy again with:
 
-```bash
+```sh
 ansible-playbook ./deploy.yml --tags web
 ```
 
 And we'll test the authentication:
-```bash
+```sh
 curl -s localhost:8083/cow
 ```
 
 #### Yaay! it didn't work!
 
-```bash
+```sh
 curl -s 'ansible:ohnoez@localhost:8083/cow'
 ```
 
@@ -44,14 +44,14 @@ Ansible provides a simple {en,de}crypt solution called Ansible Vault.
 To use it you need to create a password for encrypting and decrypting:
 
 
-```bash
+```sh
 echo $RANDOM > ./.ansible-vault-pass
 #so secure so much secure, wow
 ```
 
 Then create a _"vaulted"_ file, and add the `webserver_password` variable:
 
-```bash
+```sh
 ansible-vault create --vault-password-file=./.ansible-vault-pass dev/group_vars/all/vault
 ```
 
@@ -59,32 +59,32 @@ Since Ansible automagically includes all files in `group_vars/all/` if it's a di
 
 Awsmz, let's run it:
 
-```bash
+```sh
 ansible-playbook ./deploy.yml --tags web
 ```
 
 ### Oh noez
 
-```bash
+```sh
 ERROR: A vault password must be specified to decrypt
 ```
 
 If we tell Ansible where are password file is though:
 
-```bash
+```sh
 ansible-playbook ./deploy.yml --vault-password-file=./.ansible-vault-pass --tags web
 ```
 
 And to test if it actually worked:
 
-```bash
+```sh
 curl -s 'ansible:ohnoez@localhost:8083/cow'
 curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
 ```
 
 Adding `--vault-password-file` to each Ansible command is annoying, but solvable:
 
-```bash
+```sh
 echo "vault_password_file = ./.ansible-vault-pass" >> ansible.cfg
 ```
 
