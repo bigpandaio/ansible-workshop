@@ -83,8 +83,6 @@ So if we look back at the **nginx** site config template, we now understand that
 We then create a new location per app, `proxy_pass`-ing to the app-cluster we created.
 Basically this means that if we were to add MOAR apps or MOAR app servers, our playbooks will still work.
 
-TODO: PAR EXCELLANCE MEMEZ
-
 
 ### This is all very exciting, but...
 
