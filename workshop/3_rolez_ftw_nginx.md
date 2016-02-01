@@ -65,7 +65,7 @@ Well, we deleted the previous `apt` task and added the following to our `web.yml
 
 ```yaml
 - name: Web Server
-  hosts: tag_role_web:{{ ('&' + limit) }}
+  hosts: role_web:{{ ('&' + limit) }}
   roles:
     - nginx
 ```

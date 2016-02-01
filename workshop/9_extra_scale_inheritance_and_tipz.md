@@ -4,7 +4,23 @@
 
 A supercool feature of Ansible is **Inheritance**.
 
-We'll refactor our `app` role, to be an abstract role, getting the app name, port and cow type (!) as parameters:
+Our `app` role is already ready to be an abstract role, since we set the app name, port and cow type (!) as default parameters.
+
+#### Adding another role that inherits the `app` role is as easy as:
+
+Adding a `roles/<ROLE>/meta/main.yml`:
+
+```yaml
+---
+dependencies:
+- { role: app, tags: ['app', 'cow'] }
+```
+
+And updating the **nginx** roles default `apps` dict.
+
+Finally, updating our `app.yml` to use the new roles instead of the `app` role.
+
+As before, to save you some typing, here's the complete examples:
 
 ```sh
 cp -r ./workshop/complete_examples/step_9/roles/{cow,elephant} ./roles
@@ -46,8 +62,8 @@ Then
 vagrant up app-2
 ansible-playbook ./deploy.yml
 #no skip tags, new server!
-ansible tag_role_app -a 'curl -s localhost:3000'
-ansible tag_role_app -a 'curl -s localhost:3001'
+ansible role_app -a 'curl -s localhost:3000'
+ansible role_app -a 'curl -s localhost:3001'
 ```
 
 That's it!
@@ -60,3 +76,5 @@ Do yourself a favor, lint your **YAML**.
 While you're at it, you can also lint your Ansible **YAML** using [ansible-lint](https://github.com/willthames/ansible-lint).
 
 WHITESPACESEVERYWHEREMEME
+
+### That's it folks!

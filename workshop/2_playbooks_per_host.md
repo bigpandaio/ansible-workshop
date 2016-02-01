@@ -21,7 +21,7 @@ If we peek at the playbooks we see some **Jinja** magic:
 
 ```yaml
 - name: App Server
-  hosts: tag_role_app:{{ ('&' + limit) }}
+  hosts: role_app:{{ ('&' + limit) }}
   tasks:
     - name: Update apt cache
       apt: update_cache=yes

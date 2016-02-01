@@ -21,7 +21,7 @@ As before in the `web.yml`, we did the same with `app.yml` by deleting the previ
 
 ```yaml
 - name: App Server
-  hosts: tag_role_app:{{ ('&' + limit) }}
+  hosts: role_app:{{ ('&' + limit) }}
   roles:
     - app
 ```
@@ -35,7 +35,7 @@ ansible-playbook ./app.yml
 ### And to test it: 
 
 ```sh
-ansible tag_role_app -a 'curl -s localhost:3000'
+ansible role_app -a 'curl -s localhost:3000'
 ```
 
 ### We've deployed our app, that's it, workshop is over.

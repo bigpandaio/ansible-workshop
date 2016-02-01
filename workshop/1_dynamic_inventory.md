@@ -33,13 +33,13 @@ In addition, they're also grouped, the relevant groups for use are **web** and *
 #### We can now test it using Ansible ad-hoc commands
 
 ```sh
-ansible tag_role_web -a 'whoami'
-ansible tag_role_api -a 'whoami'
+ansible role_web -a 'whoami'
+ansible role_api -a 'whoami'
 ```
 
-### tag_role_WAT?
+### role_WAT?
 
-Where did that `tag_role_` come from?
+Where did that `role_` come from?
 
 In [our static](../dev/static) file we matched group names to tag roles, a typical convention used across providers.
 
@@ -47,10 +47,10 @@ In [our static](../dev/static) file we matched group names to tag roles, a typic
 [web]
 [app]
 
-[tag_role_web:children]
+[role_web:children]
 web
 
-[tag_role_app:children]
+[role_app:children]
 app
 ```
 

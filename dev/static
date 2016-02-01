@@ -1,8 +1,8 @@
 [web]
 [app]
 
-[tag_role_web:children]
+[role_web:children]
 web
 
-[tag_role_app:children]
+[role_app:children]
 app

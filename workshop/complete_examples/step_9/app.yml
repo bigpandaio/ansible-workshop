@@ -1,5 +1,5 @@
 - name: App Server
-  hosts: tag_role_app:{{ ('&' + limit) | default('') }}
+  hosts: role_app:{{ ('&' + limit) | default('') }}
   roles:
     - cow
     - elephant
