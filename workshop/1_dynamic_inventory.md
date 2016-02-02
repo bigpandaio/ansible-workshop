@@ -21,7 +21,7 @@ Run:
 ```sh
 ./dev/hosts --list
 #optionally, pipe to jq
-./dev/hosts --list | jq '.' 
+./dev/hosts --list | jq '.'
 #jq == EPICNESS
 ```
 
