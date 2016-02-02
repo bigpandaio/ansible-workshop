@@ -70,7 +70,10 @@ ansible role_app -a 'curl -s localhost:3000'
 ansible role_app -a 'curl -s localhost:3001'
 ```
 
-That's it!
+Notice the `--limit` we used here.
+You can use your host groups, wild cards and more patterns, see [here](http://docs.ansible.com/ansible/intro_patterns.html) for more details.
+
+That's how easy it is to add a new server.
 
 ### MOAR tips:
 

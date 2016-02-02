@@ -21,7 +21,7 @@ As before in the `web.yml`, we did the same with `app.yml` by deleting the previ
 
 ```yaml
 - name: App Server
-  hosts: role_app:{{ ('&' + limit) }}
+  hosts: role_app
   roles:
     - app
 ```

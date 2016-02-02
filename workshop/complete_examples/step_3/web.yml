@@ -1,5 +1,5 @@
 ---
 - name: Web Server
-  hosts: role_web:{{ ('&' + limit) | default('') }}
+  hosts: role_web
   roles:
     - nginx

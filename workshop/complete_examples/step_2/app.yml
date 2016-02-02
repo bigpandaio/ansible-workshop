@@ -1,6 +1,6 @@
 ---
 - name: App Server
-  hosts: role_app:{{ ('&' + limit) | default('') }}
+  hosts: role_app
   tasks:
     - name: Replace crappy apt-sources
       replace: dest=/etc/apt/sources.list regexp='http\:\/\/archive' replace="http://il.archive"

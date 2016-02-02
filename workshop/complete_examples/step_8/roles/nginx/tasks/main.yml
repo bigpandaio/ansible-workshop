@@ -42,7 +42,7 @@
   sudo: yes
 
 - name: Generate our own nginx site
-  template: src=site.conf.template dest=/etc/nginx/sites-available/site.conf owner-www-data group=www-data
+  template: src=site.conf.template dest=/etc/nginx/sites-available/site.conf owner=www-data group=www-data
   sudo: yes
   tags: web
   notify:
