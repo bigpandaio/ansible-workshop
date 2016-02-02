@@ -2,6 +2,10 @@
 - name: App Server
   hosts: role_app:{{ ('&' + limit) | default('') }}
   tasks:
+    - name: Replace crappy apt-sources
+      replace: dest=/etc/apt/sources.list regexp='(archive)' replace="il.archive"
+      sudo: yes
+
     - name: Update apt cache
       apt: update_cache=yes cache_valid_time=0
       sudo: yes
