@@ -12,7 +12,7 @@ cp ./workshop/complete_examples/step_4/app.yml ./
 - An upstart template
 - Default variables to be overridden
 - Application Variables
-- Tasks that download `http-cow` (!) and generates the service that runs this AMAZING server
+- Tasks that download `http-cow` ([source](http://github.com/erikzaadi/http-cowsay)) and generates the service that runs this AMAZING server
 - Rewrote playbook to use roles
 
 ### How do we use this role?

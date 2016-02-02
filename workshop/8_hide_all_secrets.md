@@ -104,7 +104,7 @@ ansible-vault edit --vault-password-file=./.ansible-vault-pass dev/group_vars/we
 ```
 
 **NOTE:**: When you edit a vault file, even if you don't change anything, the file will be changed. Remember to do a `git checkout` on the vaulted file to remove unneeded change commits.
-
+edit 
 Adding `--vault-password-file` to each Ansible command is annoying, but solvable:
 
 ```sh
@@ -117,7 +117,7 @@ And Voila, we can now run `ansible-playbook` without specifying the password fil
 
 Well, Ansible thought about that as well. The password file can also be an executable, E.g. LastPass cli.
 
-### One last Gotcha
+### One last note
 
 The reason we put the vaulted file in the newly created `dev/group_vars/web/` folder (as opposed to the `all` folder) was that you can't really `git diff` changes to a vault file.
 Thus you'll probably want to split up the vaulted files to something that fits host groups (or even `host_vars`).
