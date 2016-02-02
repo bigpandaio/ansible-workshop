@@ -35,6 +35,7 @@ Say that we had 5 app servers (app-1 to app-5), and we only wanted to run `app.y
 
 ```sh
 ansible-playbook ./web.yml --limit app-1
+ansible-playbook ./web.yml --limit app-*
 ```
 
 You can use your role groups, wild cards and more patterns, see [here](http://docs.ansible.com/ansible/intro_patterns.html) for more details.

@@ -32,7 +32,7 @@ As before in the `web.yml`, we did the same with `app.yml` by deleting the previ
 ansible-playbook ./app.yml
 ```
 
-### And to test it: 
+### And to test it:
 
 ```sh
 ansible role_app -a 'curl -s localhost:3000'

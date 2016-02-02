@@ -12,6 +12,7 @@
   sudo: yes
   notify:
     - Reload nginx
+  #ansible 2.0: remote_src
 
 - name: Disable default site in Nginx
   file: path=/etc/nginx/sites-enabled/default state=absent
@@ -33,3 +34,4 @@
 
 - name: Validate that nginx is installed
   uri:  url=http://127.0.0.1
+  #ansible 2.0: body_format json
