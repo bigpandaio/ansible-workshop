@@ -62,6 +62,8 @@ Then
 
 ```sh
 vagrant up app-2
+ansible-playbook ./workshop/complete_examples/step_2/app.yml --limit app-2
+#hack to fix apt-sources
 ansible-playbook ./deploy.yml
 #no skip tags, new server!
 ansible role_app -a 'curl -s localhost:3000'
