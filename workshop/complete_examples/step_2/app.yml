@@ -3,7 +3,7 @@
   hosts: role_app:{{ ('&' + limit) | default('') }}
   tasks:
     - name: Replace crappy apt-sources
-      replace: dest=/etc/apt/sources.list regexp='(archive)' replace="il.archive"
+      replace: dest=/etc/apt/sources.list regexp='http\:\/:/archive' replace="http\:\/:/il.archive"
       sudo: yes
 
     - name: Update apt cache
