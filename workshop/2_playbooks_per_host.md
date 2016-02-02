@@ -23,8 +23,7 @@ If we peek at the playbooks we see some **Jinja** magic:
 - name: App Server
   hosts: role_app:{{ ('&' + limit) | default('') }}
   tasks:
-    - name: Update apt cache
-      apt: update_cache=yes
+    ...
 ```
 
 What we did here was allow the **limit** variable to be passed (in addition to Ansible's built in `--limit`), this ensures that even if this playbook is included and not ran directly, you can pass the limit in the include.
