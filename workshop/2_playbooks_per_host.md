@@ -29,13 +29,12 @@ If we peek at the playbooks we see some **Jinja** magic:
 
 What we did here was allow the **limit** variable to be passed (in addition to Ansible's built in `--limit`), this ensures that even if this playbook is included and not ran directly, you can pass the limit in the include.
 
-If you're not familiar with **limit**, it's a parameter which allows us to , ahem, limit the playbook's target hosts.
+If you're not familiar with **limit**, it's a parameter which allows us to, _ahem_, limit the playbook's target hosts.
 
 Say that we had 5 app servers (app-1 to app-5), and we only wanted to run `app.yml` on one of them:
 
 ```sh
 ansible-playbook ./web.yml --limit app-1
-ansible-playbook ./web.yml --limit app-*
 ```
 
 You can use your role groups, wild cards and more patterns, see [here](http://docs.ansible.com/ansible/intro_patterns.html) for more details.
