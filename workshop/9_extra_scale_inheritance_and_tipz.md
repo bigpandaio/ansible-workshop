@@ -79,6 +79,6 @@ While you're at it, you can also lint your Ansible **YAML** using [ansible-lint]
 
 ![WHITESPACES EVERYWHERE](https://i.imgflip.com/ye9b3.jpg)
 
-**Ansible Lint** is also a part of the [Ansible Tookkit](https://github.com/dellis23/ansible-toolkit), which also includes other usable tools such as diffing vault files without committing any changes (`atk-git-diff`).
+Another helpful nugget is [Ansible Tookkit](https://github.com/dellis23/ansible-toolkit), which also includes other usable tools such as diffing vault files without committing any changes (`atk-git-diff`).
 
 ### That's it folks!
