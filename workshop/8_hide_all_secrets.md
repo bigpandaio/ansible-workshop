@@ -91,6 +91,20 @@ curl -s 'ansible:ohnoez@localhost:8083/cow'
 curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/cow'
 ```
 
+If we need to view the vaulted file:
+
+```sh
+ansible-vault view --vault-password-file=./.ansible-vault-pass dev/group_vars/web/vault
+```
+
+If we need to edit the vaulted file:
+
+```sh
+ansible-vault edit --vault-password-file=./.ansible-vault-pass dev/group_vars/web/vault
+```
+
+**NOTE:**: When you edit a vault file, even if you don't change anything, the file will be changed. Remember to do a `git checkout` on the vaulted file to remove unneeded change commits.
+
 Adding `--vault-password-file` to each Ansible command is annoying, but solvable:
 
 ```sh
