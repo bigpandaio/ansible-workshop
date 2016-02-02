@@ -106,7 +106,7 @@ Well, Ansible thought about that as well. The password file can also be an execu
 ### One last Gotcha
 
 The reason we put the vaulted file in the newly created `dev/group_vars/web/` folder (as opposed to the `all` folder) was that you can't really `git diff` changes to a vault file.
-Thus you'll probably want to split up the vaulted files to something that fits host groups (or even `host_vars`)....
+Thus you'll probably want to split up the vaulted files to something that fits host groups (or even `host_vars`).
 
 ### Now, if we got here and still got time
 
