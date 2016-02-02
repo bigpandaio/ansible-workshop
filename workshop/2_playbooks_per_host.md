@@ -13,7 +13,7 @@ ansible-playbook web.yml
 ansible-playbook app.yml
 ```
 
-### ZOMG WE CAN APT SOURCES
+### ZOMG WE CAN HAZ APT SOURCES
 
 You might have noticed that we didn't pass the `-i inventory` parameter to `ansible-playbook`, this is because we defined the inventory name in `ansible.cfg`.
 
