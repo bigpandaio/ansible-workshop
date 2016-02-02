@@ -34,8 +34,8 @@ In addition, they're also grouped, the relevant groups for use are **web** and *
 #### We can now test it using Ansible ad-hoc commands
 
 ```sh
-ansible role_web -a 'whoami'
-ansible role_api -a 'whoami'
+ansible role_web -a 'hostname'
+ansible role_app -a 'hostname'
 ```
 
 ### role_WAT?
