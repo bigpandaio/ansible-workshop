@@ -3,4 +3,5 @@
   hosts: role_web:{{ ('&' + limit) | default('') }}
   tasks:
     - name: Update apt cache
-      apt: update_cache=yes
+      apt: update_cache=yes cache_valid_time=0
+      sudo: yes
