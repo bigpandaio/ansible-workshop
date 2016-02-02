@@ -38,7 +38,11 @@ ansible-playbook ./app.yml
 ansible role_app -a 'curl -s localhost:3000'
 ```
 
+Why hello there gorgeous!
+
 ### We've deployed our app, that's it, workshop is over.
+
+.
 
 .
 
