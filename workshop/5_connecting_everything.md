@@ -17,7 +17,7 @@ What we're doing in this playbook is simple:
 
 Notice that the playbooks hosts is `all`, and we're limiting the task to not run on themselves.
 
-The tasks themselves run iterate on `groups.all`, which is the same ass the playbook hosts.
+The tasks themselves run iterate on `groups.all`, which is the same as the playbook hosts.
 
 We could also have used `play_hosts` here, which is another Ansible magic variable that does this (albeit limited to current play, so if we run with `serial=1`, `play_hosts` will be populated per serial run).
 

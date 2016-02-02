@@ -49,13 +49,22 @@ echo $RANDOM > ./.ansible-vault-pass
 #so secure so much secure, wow
 ```
 
-Then create a _"vaulted"_ file, and add the `webserver_password` variable:
+Now we need to create an encrypted vault file, But before creating the file, In order for Ansible to pick it up automagically, we'll move the previous `dev/group_vars/web` it it's own directory:
 
 ```sh
-ansible-vault create --vault-password-file=./.ansible-vault-pass dev/group_vars/all/vault
+mv ./dev/group_vars/web{,_}
+mkdir ./dev/group_vars/web
+mv ./dev/group_vars/web_ ./dev/group_vars/web/web
 ```
 
-Since Ansible automagically includes all files in `group_vars/all/` if it's a directory, the vaulted file will also be include.
+
+Then create a _"vaulted"_ file, and add the `webserver_password` variable.
+
+```sh
+ansible-vault create --vault-password-file=./.ansible-vault-pass dev/group_vars/web/vault
+```
+
+Since Ansible automagically includes all files in `group_vars/<GROUP_NAME>/` if it's a directory, the vaulted file will also be included.
 
 Awsmz, let's run it:
 
@@ -96,17 +105,8 @@ Well, Ansible thought about that as well. The password file can also be an execu
 
 ### One last Gotcha
 
-It's not a vault thing per say, but the only directory Ansible auto-includes is `group_vars/all` if it's a directory.
-Since you can't really `git diff` changes to a vault file, you'll probably want to split up the vaulted files to something that fits host groups.
-
-In order for this to work, you'll have to manually include the vars file in the playbook:
-
-```yaml
-  ...
-  vars_files:
-    - "{{ inventory_dir }}/group_vars/vault/your_group_var"
-  ...
-```
+The reason we put the vaulted file in the newly created `dev/group_vars/web/` folder (as opposed to the `all` folder) was that you can't really `git diff` changes to a vault file.
+Thus you'll probably want to split up the vaulted files to something that fits host groups (or even `host_vars`)....
 
 ### Now, if we got here and still got time
 
