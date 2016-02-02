@@ -21,7 +21,8 @@ Run:
 ```sh
 ./dev/hosts --list
 #optionally, pipe to jq
-./dev/hosts --list | jq '.' #jq == EPICNESS
+./dev/hosts --list | jq '.' 
+#jq == EPICNESS
 ```
 
 **NOTE:**  We're piping to `jq`, a [json cli](https://stedolan.github.io/jq) that rocks the llamas a55.
