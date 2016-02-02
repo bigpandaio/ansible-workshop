@@ -57,7 +57,7 @@ app
 
 This funky syntax is a bit like configuration files.
 
-The `[name]` syntax means group names. Simply un-bracketed `name` is a single host.
+The `[name]` syntax means group names.
 
 Using `[name:children]` means that all groups following are children of that group.
 
