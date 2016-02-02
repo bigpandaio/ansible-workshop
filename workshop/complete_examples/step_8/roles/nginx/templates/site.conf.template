@@ -21,4 +21,7 @@ server {
     auth_basic_user_file  /etc/nginx/auth-passwd;
   }
 {% endfor %}
+  location / {
+     alias /var/www/workshop/;
   }
+}
