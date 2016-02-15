@@ -71,11 +71,7 @@ Then we stated the playbook we want to run.
 #### What's an inventory?
 
 An inventory is a configuration file that states the hosts to be used, where you also can state groups of servers, and override parameters for hosts and/or groups.
-
-```
-[ansible-workshop-vagrant]
-ansible-workshop-vagrant ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222
-```
+In our case it's an executable python file that returns the current Vagrant vms.
 
 #### Ok, what was that we ran?
 

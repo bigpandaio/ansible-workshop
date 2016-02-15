@@ -78,7 +78,7 @@ E.g
     - name: Create static root dir
       file: path=/var/www/workshop state=directory owner=www-data group=www-data
       sudo: yes
-    
+
     - name: Copy static HTML files to root dir
       copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
       sudo: yes

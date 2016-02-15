@@ -69,10 +69,7 @@ Prerequisites (To be installed on your laptop):
   git clone -b noob-workshop https://github.com/bigpandaio/ansible-workshop
   cd ansible-workshop
   vagrant up
-  cp ansible/hosts{.template,}
   ```
-
-  run `vagrant ssh-config` and use the values from the output to replace the `<PLACEHOLDERS>` in `ansible/hosts`
 
   Then, to check that it works:
 
