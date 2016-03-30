@@ -52,7 +52,7 @@ Let's update the Nginx site definition with our own (and remove the default).
       sudo: yes
 
     - name: Add our own nginx site
-      copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner-www-data group=www-data
+      copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner=www-data group=www-data
       sudo: yes
 
     - name: Symlink our nginx site
