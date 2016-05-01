@@ -68,7 +68,7 @@ Now we can open our amazing SINGLE PAGE APP [here](http://127.0.0.1:8083)
 
 #### I SEE WHAT U DID THERE...
 
-We copied or own Nginx site definition using the `copy` module, made sure it was enabled by using the `file` module to symlink the file, then reloaded the Nginx service using the `service` module.
+We copied our own Nginx site definition using the `copy` module, made sure it was enabled by using the `file` module to symlink the file, then reloaded the Nginx service using the `service` module.
 
 #### But it's all sooooo... STATIC
 
