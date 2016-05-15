@@ -138,7 +138,7 @@ CURL TIME:
 curl http://127.0.0.1:8083/answer
 ```
 
-There's loads of Jinja filters available, from string manipulations to list comprehensions, and guess what, they're extendable! You can write the yourself in Python (FTW™).
+There's loads of Jinja filters available, from string manipulations to list comprehensions, and guess what, they're extendable! You can write them yourself in Python (FTW™).
 
 #### MIND BLOWN.
 
