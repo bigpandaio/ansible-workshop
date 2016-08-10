@@ -1,8 +1,12 @@
-[web]
-[app]
+[label_workshop_apprentice]
+[label_workshop_apprentice:vars]
+ansible_connection=docker
 
-[role_web:children]
-web
+[label_role_app]
+[label_role_web]
 
-[role_app:children]
-app
+[web:children]
+label_role_web
+
+[app:children]
+label_role_app

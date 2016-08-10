@@ -1,0 +1,53 @@
+---
+- name: setup container
+  hosts: localhost
+  connection: local
+  vars:
+    add_second_app: no
+    web_links: '{{ ["ansible-workshop-app-1"] | union(["ansible-workshop-app-2"] if (add_second_app | bool) else []) }}'
+  tasks:
+    - name: start app container
+      docker_container:
+        name: ansible-workshop-app-1
+        hostname: ansible-workshop-app-1
+        state: started
+        image: bigpanda/ubuntu_with_python
+        command: sleep infinity
+        labels:
+          role: 'app'
+          workshop: 'apprentice'
+        exposed_ports:
+          - 3001
+          - 3000
+
+    - name: start another app container
+      docker_container:
+        name: ansible-workshop-app-2
+        hostname: ansible-workshop-app-2
+        state: started
+        image: bigpanda/ubuntu_with_python
+        command: sleep infinity
+        labels:
+          role: 'app'
+          workshop: 'apprentice'
+        exposed_ports:
+          - 3001
+          - 3000
+      when: add_second_app | bool
+
+    - name: start web container
+      docker_container:
+        name: ansible-workshop-web
+        hostname: ansible-workshop-web
+        state: started
+        restart: '{{ add_second_app | bool }}'
+        image: bigpanda/ubuntu_with_python
+        command: sleep infinity
+        links: '{{ web_links }}'
+        labels:
+          role: 'web'
+          workshop: 'apprentice'
+        ports:
+          - '8083:80'
+
+- include: fix_apt.yml

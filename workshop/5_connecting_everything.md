@@ -1,42 +1,18 @@
 ## Connect ALL THE THINGZ
 
-We've got our web server and our app server, but they don't really have a way to communicate.
+We've got our web server and our app server, and thanks to docker, the web server knows about the app server (It's in `/etc/hosts` - check it out: `docker exec ansible-workshop-web cat /etc/hosts`)
 
-Let's get them to know each other by updating their `/etc/hosts`.
-
-Copy the file `workshop/complete_examples/step_5/hosts.yml` to the root directory:
-
-```sh
-cp workshop/complete_examples/step_5/hosts.yml ./
-```
-
-What we're doing in this playbook is simple:
-
-- Remove previous private IP of machines at other machines if exiting
-- Add new IP at other machines
-
-Notice that the playbooks hosts is `all`, and we're limiting the task to not run on themselves.
-
-The tasks themselves run iterate on `groups.all`, which is the same as the playbook hosts.
-
-We could also have used `play_hosts` here, which is another Ansible magic variable that does this (albeit limited to current play, so if we run with `serial=1`, `play_hosts` will be populated per serial run).
-
-Furthermore, we're accessing `hostvars`, which our dynamic host script generates for us.
-
-Although `private_ip` is a quick hack we did in our dynamic host script, other providers such as AWS have similar features, E.g. `private_ip` would be `ec2_private_ip_address`.
-
-**NOTE:** In other providers you might need to open the port between the hosts.
+*NOTE:* This is achieved by linking the containers, you can peek in `../bootstrap/setup.yml` to see how it's done.
 
 ### Test it!
 
 ```sh
-ansible-playbook ./hosts.yml
-ansible role_web -a 'curl -s app-1:3000'
+ansible web -a 'curl -s ansible-workshop-app-1:3000'
 ```
 
-Man that cow is awesome.
+##### Man that cow is awesome.
 
-![ZE LA FAN!](http://i.imgur.com/OWTWH8G.gif)
+![ZE LA FAN!](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/cowtastic.gif?raw=true)
 
 ### Ok that's fine, there's communication between the machines
 
@@ -45,7 +21,7 @@ Let's update the **nginx** role to proxy requests to our backend app server.
 ```sh
 cp -r workshop/complete_examples/step_5/roles/nginx ./roles/
 ansible-playbook ./web.yml
-ansible role_web -a 'curl -s localhost/cow'
+ansible web -a 'curl -s localhost/cow'
 ```
 
 What we've changed here is the **nginx** template:
@@ -63,7 +39,7 @@ upstream {{ app }}-cluster {
 
 ### WAT DA DUCKING DUCK?!?!?
 
-![DUCK THIS!](https://media.giphy.com/media/xvGEx3cazysda/giphy.gif)
+![DUCK THIS!](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/ducking.gif?raw=true)
 
 Let's rewind a bit and have a looksie in our new `roles/nginx/defaults/main.yml`
 
@@ -83,7 +59,7 @@ So if we look back at the **nginx** site config template, we now understand that
 We then create a new location per app, `proxy_pass`-ing to the app-cluster we created.
 Basically this means that if we were to add MOAR apps or MOAR app servers, our playbooks will still work.
 
-![DUCKEY FUNK!](https://media.giphy.com/media/b9QBHfcNpvqDK/giphy.gif)
+![DUCKEY FUNK!](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/duckfunk.gif?raw=true)
 
 ### This is all very exciting, but...
 

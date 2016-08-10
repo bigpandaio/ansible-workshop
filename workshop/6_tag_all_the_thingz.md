@@ -25,7 +25,7 @@ ansible-playbook deploy.yml --skip-tags infra --tags app
 
 ### SO MUCH SPEED SO MUCH DOGE
 
-![NOTHING CAN STOP ME!](http://i.imgur.com/D1snM4J.gif)
+![NOTHING CAN STOP ME!](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/juggernaut.gif?raw=true)
 
 So now we have a single point for our deployments. We can now use this script via ChatOps or whatever the cool kids are doing.
 
@@ -35,6 +35,6 @@ The one pitfall you must prepare yourselves for is:
 
 **WHICH VARIABLE OVERRIDES WHICH!?!?**
 
-![WHICH VARIABLE OVERRIDES WHICH!](https://i.imgflip.com/ye9wp.jpg)
+![WHICH VARIABLE OVERRIDES WHICH!](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/what-where.jpg?raw=true)
 
 We'll tackle that in [variables everywhere](./7_variables_everywhere.md).

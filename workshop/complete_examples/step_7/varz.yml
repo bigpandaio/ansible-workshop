@@ -1,6 +1,6 @@
 ---
 - name : Debug Var
-  hosts: all
+  hosts: label_workshop_apprentice
   vars:
     test_var: 'at playbook'
   roles:

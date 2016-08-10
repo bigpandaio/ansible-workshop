@@ -1,42 +1,28 @@
 ---
 - name: Test if service exists
-  stat: path=/etc/init/{{ cow_app_name }}
+  stat: path="/etc/init.d/{{ cow_app_name }}"
   register: service_exists
-  #ansible 2.0: checksum_algorithm
 
 - name: Stop service when exists
   service: name={{ cow_app_name }} state=stopped
   when: service_exists.stat.exists
-  sudo: yes
 
 - name: Install Cowsay
   apt:  name=cowsay state=present
-  sudo: yes
 
-#ansible 2.0
-#- name: Download and unarchive http-cow
-#  unarchive: src="https://github.com/erikzaadi/http-cowsay/releases/download/v0.1/http-cow.tar.gz" dest="{{ cow_app_script_path | dirname }}" owner=root group=root mode=755
-#  sudo: yes
-#  #ansible 2.0: list_files, src from urls
-#ansible 2.0 end
+- name: Test if http-cowsay exists
+  stat: path="{{ cow_app_script_path }}"
+  register: httpcow_exists
 
-#pre ansible 2.0
-- name: Download http-cow archive
-  get_url: url="https://github.com/erikzaadi/http-cowsay/releases/download/v0.1/http-cow.tar.gz" dest=/tmp
-  #ansible 2.0: checksum, force_basic_auth, headers
-
-- name: Unarchive http-cow
-  unarchive: src="/tmp/http-cow.tar.gz" dest="{{ cow_app_script_path | dirname }}" owner=root group=root mode=755 copy=no
-  sudo: yes
-#pre ansible 2.0 end
+- name: Download and unarchive http-cow
+  unarchive: src="https://github.com/erikzaadi/http-cowsay/releases/download/v0.1/http-cow.tar.gz" dest="{{ cow_app_script_path | dirname }}" owner=root group=root mode=755 copy=no
+  when: not httpcow_exists.stat.exists
 
 - name: Generate service template
-  template: src=cow-app-upstart.conf.template dest="/etc/init/{{ cow_app_name }}.conf" mode=755 owner=root group=root
-  sudo: yes
+  template: src=cow-app-service.template dest="/etc/init.d/{{ cow_app_name }}" mode=755 owner=root group=root
 
 - name: Start service
-  service: name="{{ cow_app_name }}" state=started
-  sudo: yes
+  service: name="{{ cow_app_name }}" state=started enabled=yes
 
 - name: Health check
-  uri: url="http://localhost:{{ cow_app_port }}"
+  uri: url="http://localhost:{{ cow_app_port }}" method=HEAD

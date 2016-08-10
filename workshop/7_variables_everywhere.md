@@ -34,7 +34,7 @@ Each one contains a hint to where the file is.
 
 Comment out the definition of `test_var` according the message you get when running, UNT ZEN: RINSE, REPEAT!!1
 
-![AGAIN, AGAIN](https://i.chzbgr.com/full/7515129088/h1A9734F4/)
+![AGAIN, AGAIN](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/never-ending-facepalm.gif?raw=true)
 
 _THIS WILL TAKE A WHILE!!1_
 

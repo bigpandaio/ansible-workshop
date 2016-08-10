@@ -1,11 +1,6 @@
 ---
 - name: Web Server
-  hosts: role_web
+  hosts: web
   tasks:
-    - name: Replace crappy apt-sources
-      replace: dest=/etc/apt/sources.list regexp='http\:\/\/archive' replace="http://il.archive"
-      sudo: yes
-
-    - name: Update apt cache
-      apt: update_cache=yes cache_valid_time=0
-      sudo: yes
+    - name: Print container name
+      debug: msg="Container - {{ inventory_hostname }}"

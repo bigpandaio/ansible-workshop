@@ -4,3 +4,4 @@ dev/*_vars
 .vagrant/
 .DS_Store
 .ansible-vault-pass
+*.retry

@@ -1,5 +1,5 @@
 ---
 - name: App Server
-  hosts: role_app
+  hosts: app
   roles:
     - app

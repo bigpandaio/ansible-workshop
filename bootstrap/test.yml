@@ -1,0 +1,11 @@
+---
+- name: Test docker_inventory
+  hosts: label_workshop_apprentice
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Install curl
+      apt: name=curl state=present
+
+    - name: Who's my container
+      debug: msg="Container - {{ inventory_hostname }}"

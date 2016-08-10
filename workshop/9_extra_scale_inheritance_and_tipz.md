@@ -37,7 +37,7 @@ curl -s 'ansible:<GENERATED_PASSWORD>@localhost:8083/elephant'
 
 LaBoomz, we now have an elephant app!
 
-![SEE ME IN THE ROOM](https://i.imgflip.com/ye9h7.jpg)
+![SEE ME IN THE ROOM](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/ascii-elephant.jpg?raw=true)
 
 _Bonus_: `open http://localhost:8083` (or `gnome-open` if you're on Ubuntu with Gnome).
 
@@ -49,29 +49,31 @@ _Bonus_: `open http://localhost:8083` (or `gnome-open` if you're on Ubuntu with 
 
 ### What about another server?
 
-Uncomment the following part in the `Vagrantfile`:
-
-```ruby
-  #config.vm.define "app-2" do |another_app|
-  #  another_app.vm.hostname = 'app-2'
-  #  another_app.vm.network :private_network, type: "dhcp"
-  #end
-```
-
-Then
+Run:
 
 ```sh
-vagrant up app-2
-ansible-playbook ./workshop/complete_examples/step_2/app.yml --limit app-2
-#hack to fix apt-sources
-ansible-playbook ./deploy.yml
+ansible-playbook ./bootstrap/setup.yml -e add_second_app=True
+ansible-playbook ./bootstrap/test.yml
+```
+
+If the test fails, as we did before starting, run
+
+```
+ansible-playbook ./bootstrap/fix_apt.yml
+```
+
+Yaay, another docker container is up!
+
+```sh
+ansible-playbook ./deploy.yml --limit \!ansible-workshop-app-1 --tags=all
 #no skip tags, new server!
-ansible role_app -a 'curl -s localhost:3000'
-ansible role_app -a 'curl -s localhost:3001'
+ansible app -a 'curl -s localhost:3000'
+ansible app -a 'curl -s localhost:3001'
 ```
 
 Notice the `--limit` we used here.
 You can use your host groups, wild cards and more patterns, see [here](http://docs.ansible.com/ansible/intro_patterns.html) for more details.
+In our case, we didn't want to run the deploy on the existing app server.
 
 That's how easy it is to add a new server.
 
@@ -82,7 +84,7 @@ Do yourself a favor, lint your **YAML**.
 
 While you're at it, you can also lint your Ansible **YAML** using [ansible-lint](https://github.com/willthames/ansible-lint).
 
-![WHITESPACES EVERYWHERE](https://i.imgflip.com/ye9b3.jpg)
+![WHITESPACES EVERYWHERE](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/whitespace.jpg?raw=true)
 
 Another helpful nugget is [Ansible Tookkit](https://github.com/dellis23/ansible-toolkit), which also includes other usable tools such as diffing vault files without committing any changes (`atk-git-diff`).
 

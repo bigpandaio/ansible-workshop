@@ -52,31 +52,39 @@ If you're not familiar with Ansible yet, do take half an hour and go through our
 
 Prerequisites (To be installed on your laptop):
 
-- [Vagrant](https://www.vagrantup.com/downloads.html)  
-  If you're coming to the meetup, speed things up by running this before you come:
+- [Docker](https://docs.docker.com/engine/installation/) 
 
   ```
-  vagrant box add 'ubuntu/trusty64' https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+  docker pull bigpanda/ubuntu_with_python
   ```
 
 - [Ansible](http://docs.ansible.com/intro_installation.html) 
 
   ```
-  (sudo) pip install ansible
+  (sudo) pip install 'ansible>=2.1' docker-py
   ```
+
+  *NOTE*: You'll need Ansible version 2.1 and up
 
 - Then:
 
   ```
-  git clone -b apprentice-workshop https://github.com/bigpandaio/ansible-workshop
+  git clone -b apprentice-workshop-docker https://github.com/bigpandaio/ansible-workshop
   cd ansible-workshop
-  vagrant up
+  ansible-playbook ./bootstrap/setup.yml
   ```
 
   Then, to check that it works:
 
   ```
-  ansible all -m ping
+  ansible-playbook ./bootstrap/test.yml
+  ```
+
+  If you have a problem with installing `curl` (one of the test steps), run
+
+  ```
+  ansible-playbook ./bootstrap/fix_apt.yml
+  ansible-playbook ./bootstrap/test.yml
   ```
 
 ## Now what?

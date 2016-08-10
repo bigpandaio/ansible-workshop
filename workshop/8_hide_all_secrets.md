@@ -33,7 +33,7 @@ That's better.
 
 _Or is it_?
 
-![SECURELY COMMITTED CLEAR TEXT](https://i.imgflip.com/ye9jg.jpg)
+![SECURELY COMMITTED CLEAR TEXT](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/securez.jpg?raw=true)
 
 We have a password hard coded into git.
 
@@ -46,7 +46,7 @@ To use it you need to create a password for encrypting and decrypting:
 
 ```sh
 echo $RANDOM > ./.ansible-vault-pass
-#so secure so much secure, wow
+#so secure, so much secure, wow
 ```
 
 Now we need to create an encrypted vault file, But before creating the file, In order for Ansible to pick it up automagically, we'll move the previous `dev/group_vars/web` it it's own directory:
@@ -62,6 +62,12 @@ Then create a _"vaulted"_ file, and add the `webserver_password` variable.
 
 ```sh
 ansible-vault create --vault-password-file=./.ansible-vault-pass dev/group_vars/web/vault
+```
+
+And enter
+```
+---
+webserver_password: password_that_you_like
 ```
 
 Since Ansible automagically includes all files in `group_vars/<GROUP_NAME>/` if it's a directory, the vaulted file will also be included.
@@ -115,7 +121,7 @@ And Voila, we can now run `ansible-playbook` without specifying the password fil
 
 ### But that's just clear text in a file, how's that secure?
 
-Well, Ansible thought about that as well. The password file can also be an executable, E.g. LastPass cli.
+Well, Ansible thought about that as well. The password file can also be an executable, E.g. you can query OnePassword or LastPass cli.
 
 ### One last note
 

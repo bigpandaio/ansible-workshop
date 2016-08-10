@@ -1,4 +1,3 @@
 ---
-- include: hosts.yml tags=infra
 - include: app.yml tags=app
 - include: web.yml tags=web
