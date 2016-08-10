@@ -1,6 +1,6 @@
 ---
 - name: Initial playbook
-  hosts: all
+  hosts: ansible-workshop
   tasks:
     - name: Ping server
-      ping: 
+      ping:

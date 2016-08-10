@@ -1,0 +1,11 @@
+---
+- name: Fix apt madness
+  hosts: label_workshop_apprentice
+  tasks:
+    - name: Replace crappy apt-sources
+      replace: dest=/etc/apt/sources.list regexp='http\:\/\/archive' replace="http://il.archive"
+      register: replace_apt
+
+    - name: Update apt cache
+      apt: update_cache=yes cache_valid_time=0
+      when: replace_apt.changed

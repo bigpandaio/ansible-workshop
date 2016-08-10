@@ -1,3 +1,4 @@
 /*.yml
 .vagrant/
 .DS_Store
+*.retry

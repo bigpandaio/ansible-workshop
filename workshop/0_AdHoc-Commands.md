@@ -7,8 +7,8 @@ Now we'll use Ansible to run ad hoc commands on our host
 Examples
 
 ```
-ansible ansible-workshop-vagrant -m ping
-ansible ansible-workshop-vagrant -a '/bin/echo Hello there!'
+ansible ansible-workshop ping
+ansible ansible-workshop '/bin/echo "Hello there!"'
 ```
 
 #### Good for:

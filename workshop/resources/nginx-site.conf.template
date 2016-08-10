@@ -11,7 +11,7 @@ server {
 
   location /answer {
     add_header "Content-Type" "text/text";
-    return 200 "{{ magic_answer|default(42)}}";
+    return 200 "{{ magic_answer | default(42) }}";
   }
 
   location / {

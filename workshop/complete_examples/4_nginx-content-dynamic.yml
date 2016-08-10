@@ -1,40 +1,35 @@
 ---
 - name: Initial playbook
-  hosts: all
+  hosts: ansible-workshop
   tasks:
     - name: Install nginx on Ubunti/Debian
       apt:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "Debian"
 
     - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "RedHat"
 
-    - name: Validate that nginx is installed
+    - name: Verify that nginx is started
+      service: name=nginx state=started
+
+    - name: Validate that nginx is running
       uri:  url=http://localhost method=HEAD
 
     - name: Create static root dir
       file: path=/var/www/workshop state=directory owner=www-data group=www-data
-      sudo: yes
-    
+
     - name: Copy static HTML files to root dir
       copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
-      sudo: yes
 
     - name: Disable default site in nginx
       file: path=/etc/nginx/sites-enabled/default state=absent
-      sudo: yes
 
     - name: Generate our own nginx site
-      template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner-www-data group=www-data
-      sudo: yes
+      template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner=www-data group=www-data
 
     - name: Symlink our nginx site
       file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
-      sudo: yes
 
     - name: Reload nginx service
       service: name=nginx state=reloaded
-      sudo: yes

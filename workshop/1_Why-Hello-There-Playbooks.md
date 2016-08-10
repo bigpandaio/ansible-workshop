@@ -11,6 +11,7 @@ Here's a small example:
 ```
 ---
 - name: Initial playbook
+  hosts: ansible-workshop
   tasks:
    - ...
 ```
@@ -18,7 +19,7 @@ Here's a small example:
 Let's run a sample playbook we added in the `workshop/examples` folder called `0_initial.yml`:
 
 ```
-ansible-playbook -i ansible/hosts ./workshop/complete_examples/0_initial.yml
+ansible-playbook -i ansible ./workshop/complete_examples/0_initial.yml
 ```
 
 #### What the, WAT, WHAT IS THAT COW???
@@ -27,7 +28,7 @@ Oh that, yes, ahem, that's `cowsay`.
 
 ```
 
-ok: [ansible-workshop-vagrant]
+ok: [ansible-workshop]
  ___________________
 < TASK: Ping server >
  -------------------
@@ -50,28 +51,28 @@ export ANSIBLE_NOCOWS=1
 Let's run that again now
 
 ```
-ansible-playbook -i ansible/hosts ./workshop/complete_examples/0_initial.yml
+ansible-playbook -i ansible ./workshop/complete_examples/0_initial.yml
 ```
 
 ```
 TASK: [Ping server] ***********************************************************
-ok: [ansible-workshop-vagrant]
+ok: [ansible-workshop]
 ```
 
 Ok, that's a bit slimmer and better.
 
-**NOTE:** That can be disabled permantly in the ansible configuration, see [here](http://docs.ansible.com/intro_configuration.html#nocows) for details. 
+**NOTE:** That can be disabled permanently in the ansible configuration, see [here](http://docs.ansible.com/intro_configuration.html#nocows) for details. 
 Although all the cool kids are using `export ANSIBLE_COW_SELECTION=random`
 
 #### Enough with the Cows, what did we do here exactly?
 
-We ran `ansible-playbook`, with the parameter `-i`, which tells `ansible-playbook` where to find an inventory file.
+We ran `ansible-playbook`, with the parameter `-i`, which tells `ansible-playbook` where to find an inventory file/directory.
 Then we stated the playbook we want to run.
 
 #### What's an inventory?
 
 An inventory is a configuration file that states the hosts to be used, where you also can state groups of servers, and override parameters for hosts and/or groups.
-In our case it's an executable python file that returns the current Vagrant vms.
+In our case it's an executable python file that returns the current docker container we are using.
 
 #### Ok, what was that we ran?
 
@@ -80,15 +81,15 @@ Let's have a looksie at the playbook:
 ```
 ---
 - name: Initial playbook
-  hosts: all
+  hosts: ansible-workshop
   tasks:
     - name: Ping server
-      ping: 
+      ping:
 ```
 
-We asked Ansible to run on all hosts known to the inventory file we passed it, and ping that server.
+We asked Ansible to run the _ansible-workshop_ host, and ping that server.
 
-**NOTE:** *The Ansible `ping` module doesn't actually run the ping command, just verifies that ansible can connect via ssh to the host*.
+**NOTE:** *The Ansible `ping` module doesn't actually run the ping command, just verifies that ansible can connect via ssh/docker to the host*.
 
 
 #### Well that did a can of whoop-nothing!

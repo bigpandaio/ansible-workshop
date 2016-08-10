@@ -1,0 +1,1 @@
+ansible-workshop ansible_connection=docker

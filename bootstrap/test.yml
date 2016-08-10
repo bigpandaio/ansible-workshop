@@ -1,0 +1,10 @@
+- name: Test docker_inventory
+  hosts: ansible-workshop
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Why hello there container
+      debug: msg="Container - {{ inventory_hostname }}"
+
+    - name: Install curl
+      apt: name=curl state=present

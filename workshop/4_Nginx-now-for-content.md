@@ -9,28 +9,27 @@ Man, this is Geocities all over again! The excitement!!1
 
 ```
 - name: Initial playbook
-  hosts: all
+  hosts: ansible-workshop
   tasks:
     - name: Install nginx on Ubuntu/Debian
       apt:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "Debian"
 
     - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "RedHat"
 
-    - name: Validate that nginx is installed
+    - name: Verify that nginx is started
+      service: name=nginx state=started
+
+    - name: Validate that nginx is running
       uri:  url=http://localhost method=HEAD
 
     - name: Create static root dir
       file: path=/var/www/workshop state=directory owner=www-data group=www-data
-      sudo: yes
-    
+
     - name: Copy static HTML files to root dir
       copy: src=workshop/resources/index.html dest=/var/www/workshop owner=www-data group=www-data
-      sudo: yes
 ```
 
 #### So what did we do here?
@@ -49,19 +48,15 @@ Let's update the Nginx site definition with our own (and remove the default).
 ...
     - name: Disable default site in Nginx
       file: path=/etc/nginx/sites-enabled/default state=absent
-      sudo: yes
 
     - name: Add our own nginx site
       copy: src=workshop/resources/nginx-site.conf dest=/etc/nginx/sites-available owner=www-data group=www-data
-      sudo: yes
 
     - name: Symlink our nginx site
       file: state=link src=/etc/nginx/sites-available/nginx-site.conf path=/etc/nginx/sites-enabled/nginx-site.conf owner=www-data group=www-data
-      sudo: yes
 
     - name: Reload nginx service
       service: name=nginx state=reloaded
-      sudo: yes
 ```
 
 Now we can open our amazing SINGLE PAGE APP [here](http://127.0.0.1:8083)
@@ -82,7 +77,6 @@ We'll replace the copy task we just wrote with this nifty snippet that uses the 
 ...
     - name: Generate our own nginx site
       template: src=workshop/resources/nginx-site.conf.template dest=/etc/nginx/sites-available/nginx-site.conf owner=www-data group=www-data
-      sudo: yes
 ```
 
 The `template` module uses Jinja (A python template engine that rocks) to render the template.
@@ -112,7 +106,7 @@ Let's look at the template used in that nifty snippet:
 
   location /answer {
     add_header "Content-Type" "text/text";
-    return 200 "{{ magic_answer|default(42)}}";
+    return 200 "{{ magic_answer | default(42) }}";
   }
 
 
@@ -129,7 +123,7 @@ The second part is more interesting, here we use the `magic_answer` variable, an
 Let's run the playbook again, and override our `magic_answer` variable:
 
 ```
-ansible-playbook -i ansible/hosts ./nginx-awesome.yml -e magic_answer=1337
+ansible-playbook -i ansible ./nginx-awesome.yml -e magic_answer=1337
 ```
 
 CURL TIME:
@@ -142,7 +136,7 @@ There's loads of Jinja filters available, from string manipulations to list comp
 
 #### MIND BLOWN.
 
-![MIND BLOWN](http://i.imgur.com/C4buo.gif)
+![MIND BLOWN](https://github.com/bigpandaio/ansible-workshop/blob/noob-workshop-docker/memez/mind_blown.gif?raw=true)
 
 Let's to a small break, we'll probably need some snacks to make all of this AWESOMENESS melt in.
 See you in 5 minutes at [the next step](./5_Loops-Oh-My.md).

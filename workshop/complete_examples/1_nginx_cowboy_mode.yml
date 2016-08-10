@@ -1,10 +1,12 @@
 ---
 - name: Initial playbook
-  hosts: all
+  hosts: ansible-workshop
   tasks:
     - name: Install nginx
       apt: name=nginx state=present
-      sudo: yes
 
-    - name: Validate that nginx is installed
+    - name: Verify that nginx is started
+      service: name=nginx state=started
+
+    - name: Validate that nginx is running
       uri: url=http://localhost method=HEAD

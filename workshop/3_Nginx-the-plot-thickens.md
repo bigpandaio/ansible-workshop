@@ -13,7 +13,6 @@ For each task in our playbook, we can add a `when` directive:
   tasks:
     - name: Install nginx
       apt:  name=nginx state=present
-      sudo: yes
       when: something is not "sababa"
 ```
 
@@ -25,18 +24,18 @@ Let's wait for the excitement of the Pythonistas to relax a bit, then let's cont
 
 NO. You there in the 3rd row. NO. We'll NOT `cat /etc/lsb_release` or use `uname -dASDASE`.
 
-![UNAME. NO](http://cdn.meme.am/instances2/500x/178600.jpg)
+![UNAME. NO](https://github.com/bigpandaio/ansible-workshop/blob/noob-workshop-docker/memez/uname_no.jpg?raw=true)
 
 Ansible exposes about a trizilion magic variables that holds information about the running ansible process, the target host and MOAR™.
 
 Let's use one of those magic variables in our `when` directive called `ansible_os_family`.
 
-![Magic](http://10pm.com/wp-content/uploads/2015/04/g1-16.gif)
+![Magic](https://github.com/bigpandaio/ansible-workshop/blob/noob-workshop-docker/memez/magic.gif?raw=true)
 
 You can actually get the (very long) list of variables available by running:
 
 ```
-ansible -i ansible/hosts all -m setup
+ansible -i ansible ansible-workshop -m setup
 ```
 
 #### Ok, enough with the MEMEz, let's actually use that
@@ -46,12 +45,10 @@ ansible -i ansible/hosts all -m setup
   tasks:
     - name: Install nginx on Ubuntu/Debian
       apt:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "Debian"
 
     - name: Install nginx on RedHat/CentOS
       yum:  name=nginx state=present
-      sudo: yes
       when: ansible_os_family == "RedHat"
 ```
 
@@ -60,7 +57,7 @@ ansible -i ansible/hosts all -m setup
 The Ansible output now had a skipped task:
 
 ```
-skipping: [ansible-workshop-vagrant]
+skipping: [ansible-workshop]
 ```
 
 That's the *Install nginx on RedHat/CentOS* task that is not running because the `when` directive is false.
@@ -69,12 +66,12 @@ AHHH.
 
 #### Still though, We've just installed Nginx, haven't really deployed anything have we now?
 
-Ok Ok, 
+Ok Ok,
 
-KEEP CALM 
+KEEP CALM
 
-AND 
+AND
 
-MOVE TO 
+MOVE TO
 
 [THE NEXT STEP](./4_Nginx-now-for-content.md)

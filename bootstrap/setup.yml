@@ -1,0 +1,13 @@
+---
+- name: setup container
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: start container
+      docker_container:
+        name: ansible-workshop
+        state: started
+        image: bigpanda/ubuntu_with_python
+        command: sleep infinity
+        ports:
+          - '8083:80'

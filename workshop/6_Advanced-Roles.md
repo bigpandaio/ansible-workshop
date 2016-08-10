@@ -26,6 +26,6 @@ In Ansible terms, that's one Playbook, running two Roles:
 
 #### Show me some!
 
-Well that's for the next Ansible Hands on Workshop!
+Well that's for the next Ansible Hands on Workshop (That's the [Apprentice / 102](https://github.com/bigpandaio/ansible-workshop/tree/apprentice-workshop-docker))!
 
 But you can peek a bit at [our examples](https://github.com/bigpandaio/ansible-workshop/tree/07-roles-dep/ansible) or the official [Ansible examples](https://github.com/ansible/ansible-examples)
