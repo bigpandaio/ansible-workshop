@@ -2,7 +2,7 @@
 
 #### Let's face it though, most deployments are more than just static files...
 
-Usually, we'll need to prepare our targent environment with needed packages.
+Usually, we'll need to prepare our target environment with needed packages.
 
 So if we'll think a bit, we'd use the `apt` or `yum` module as we installed Nginx.
 

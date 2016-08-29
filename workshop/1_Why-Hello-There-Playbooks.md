@@ -89,7 +89,9 @@ Let's have a looksie at the playbook:
 
 We asked Ansible to run the _ansible-workshop_ host, and ping that server.
 
-**NOTE:** *The Ansible `ping` module doesn't actually run the ping command, just verifies that ansible can connect via ssh/docker to the host*.
+**NOTE:** *The Ansible `ping` module doesn't actually run the ping command, just verifies that ansible can connect via ssh/docker to the host.*
+
+**YET ANOTHER NOTE:** *The examples from now on will not explicitly use the `-i ansible` syntax, as we wrote that in the `ansible.cfg` file.*
 
 
 #### Well that did a can of whoop-nothing!

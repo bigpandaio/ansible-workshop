@@ -7,8 +7,8 @@ Now we'll use Ansible to run ad hoc commands on our host
 Examples
 
 ```
-ansible ansible-workshop ping
-ansible ansible-workshop '/bin/echo "Hello there!"'
+ansible ansible-workshop -m ping
+ansible ansible-workshop -a '/bin/echo "Hello there!"'
 ```
 
 #### Good for:
@@ -18,7 +18,7 @@ ansible ansible-workshop '/bin/echo "Hello there!"'
 
 #### Not that good for:
 
-- Reoccuring events (deployments / configuration)
+- Reoccurring events (deployments / configuration)
 - Needs to be entered manually (THE HORROR!!1)
 
 #### But then, that's not very *AUTOMATED*??

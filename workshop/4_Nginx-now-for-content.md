@@ -123,7 +123,7 @@ The second part is more interesting, here we use the `magic_answer` variable, an
 Let's run the playbook again, and override our `magic_answer` variable:
 
 ```
-ansible-playbook -i ansible ./nginx-awesome.yml -e magic_answer=1337
+ansible-playbook ./nginx-awesome.yml -e magic_answer=1337
 ```
 
 CURL TIME:

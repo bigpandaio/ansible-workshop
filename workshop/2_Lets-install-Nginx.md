@@ -44,7 +44,7 @@ To achieve that, we'd add `become: yes` to the task.
 And now we run it as before:
 
 ```
-ansible-playbook -i ansible ./nginx-awesome.yml
+ansible-playbook ./nginx-awesome.yml
 ```
 
 And we can test that it works by doing:

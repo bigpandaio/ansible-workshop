@@ -35,7 +35,7 @@ Let's use one of those magic variables in our `when` directive called `ansible_o
 You can actually get the (very long) list of variables available by running:
 
 ```
-ansible -i ansible ansible-workshop -m setup
+ansible ansible-workshop -m setup
 ```
 
 #### Ok, enough with the MEMEz, let's actually use that
