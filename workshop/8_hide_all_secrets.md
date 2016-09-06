@@ -81,7 +81,7 @@ ansible-playbook ./deploy.yml --tags web
 ### Oh noez
 
 ```sh
-ERROR: A vault password must be specified to decrypt
+ERROR! Decryption failed 
 ```
 
 If we tell Ansible where are password file is though:
