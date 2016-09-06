@@ -84,7 +84,6 @@ Prerequisites (To be installed on your laptop):
   ansible-playbook ./bootstrap/fix_apt.yml
   ansible-playbook ./bootstrap/test.yml
   ```
-  ```
 
 ## Now what?
 
