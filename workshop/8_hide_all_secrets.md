@@ -49,7 +49,7 @@ echo $RANDOM > ./.ansible-vault-pass
 #so secure, so much secure, wow
 ```
 
-Now we need to create an encrypted vault file, But before creating the file, In order for Ansible to pick it up automagically, we'll move the previous `dev/group_vars/web` it it's own directory:
+Now we need to create an encrypted vault file, But before creating the file, In order for Ansible to pick it up automagically, we'll move the previous `dev/group_vars/web` to it's own directory:
 
 ```sh
 mv ./dev/group_vars/web{,_}
