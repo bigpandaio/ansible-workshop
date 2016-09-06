@@ -55,7 +55,7 @@ cp ./workshop/complete_examples/step_3/web.yml ./
 We now have:
 
 - tasks defined in the `roles/nginx/tasks/main.yml` file
-- a handler in `roles/nginx/handles/main.yml`
+- a handler in `roles/nginx/handlers/main.yml`
 - some static files used by nginx (configuration and home page)
 - Overwrite the previous playbooks to use roles
 
