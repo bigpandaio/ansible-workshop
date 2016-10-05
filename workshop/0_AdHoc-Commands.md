@@ -1,8 +1,8 @@
-## Ok, Ansible can connect to vagrant, what now?
+## Ok, Ansible can connect to docker, what now?
 
 #### Running Ansible Ad-Hoc commands
 
-Now we'll use Ansible to run ad hoc commands on our host
+Now we'll use Ansible to run ad hoc commands on our instance
 
 Examples
 
