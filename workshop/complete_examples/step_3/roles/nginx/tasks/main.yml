@@ -2,6 +2,9 @@
 - name: Install Dependencies
   apt:  name=nginx state=present
 
+- name: Install curl
+  apt:  name=curl state=present
+
 - name: Ensure that nginx is running
   service: name=nginx state=started
 
