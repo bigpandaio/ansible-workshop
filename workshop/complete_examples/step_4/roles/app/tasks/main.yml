@@ -7,6 +7,9 @@
   service: name={{ cow_app_name }} state=stopped
   when: service_exists.stat.exists
 
+- name: Install curl
+  apt:  name=curl state=present
+
 - name: Install Cowsay
   apt:  name=cowsay state=present
 
