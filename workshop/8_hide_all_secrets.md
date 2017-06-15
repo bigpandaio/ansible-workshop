@@ -84,7 +84,7 @@ ansible-playbook ./deploy.yml --tags web
 ERROR! Decryption failed 
 ```
 
-If we tell Ansible where are password file is though:
+If we tell Ansible where the password file is though:
 
 ```sh
 ansible-playbook ./deploy.yml --vault-password-file=./.ansible-vault-pass --tags web
@@ -109,8 +109,7 @@ If we need to edit the vaulted file:
 ansible-vault edit --vault-password-file=./.ansible-vault-pass dev/group_vars/web/vault
 ```
 
-**NOTE:**: When you edit a vault file, even if you don't change anything, the file will be changed. Remember to do a `git checkout` on the vaulted file to remove unneeded change commits.
-edit 
+**NOTE:** When you edit a vault file, even if you don't change anything, the file will be changed. Remember to do a `git checkout` on the vaulted file to remove unneeded change commits.
 Adding `--vault-password-file` to each Ansible command is annoying, but solvable:
 
 ```sh

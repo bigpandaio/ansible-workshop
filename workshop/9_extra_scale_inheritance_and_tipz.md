@@ -86,6 +86,6 @@ While you're at it, you can also lint your Ansible **YAML** using [ansible-lint]
 
 ![WHITESPACES EVERYWHERE](https://github.com/bigpandaio/ansible-workshop/blob/apprentice-workshop-docker/memez/whitespace.jpg?raw=true)
 
-Another helpful nugget is [Ansible Tookkit](https://github.com/dellis23/ansible-toolkit), which also includes other usable tools such as diffing vault files without committing any changes (`atk-git-diff`).
+Another helpful nugget is [Ansible Toolkit](https://github.com/dellis23/ansible-toolkit), which also includes other usable tools such as diffing vault files without committing any changes (`atk-git-diff`).
 
 ### That's it folks!

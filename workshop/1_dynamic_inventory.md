@@ -1,4 +1,4 @@
-## In the previous workshop, we had no idea how the hosts where magically working.
+## In the previous workshop, we had no idea how the hosts were magically working.
 
 That sucks, let's get smart shall we?
 
