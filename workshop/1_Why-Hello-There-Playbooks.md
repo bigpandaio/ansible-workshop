@@ -4,7 +4,7 @@
 
 Playbooks are YAML files that declaratively express tasks to run on a set of hosts
 
-A YAML file allows a simple human readable syntax, is easy to read and write, but it has some [GOTCHAS](http://docs.ansible.com/YAMLSyntax.html) which are worth reading up on.
+A YAML file allows a simple human readable syntax, is easy to read and write, but it has some [GOTCHAS](http://docs.ansible.com/ansible/YAMLSyntax.html#gotchas) which are worth reading up on.
 
 Here's a small example:
 

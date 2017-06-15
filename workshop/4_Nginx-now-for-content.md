@@ -138,5 +138,5 @@ There's loads of Jinja filters available, from string manipulations to list comp
 
 ![MIND BLOWN](https://github.com/bigpandaio/ansible-workshop/blob/noob-workshop-docker/memez/mind_blown.gif?raw=true)
 
-Let's to a small break, we'll probably need some snacks to make all of this AWESOMENESS melt in.
+Let's do a small break, we'll probably need some snacks to make all of this AWESOMENESS melt in.
 See you in 5 minutes at [the next step](./5_Loops-Oh-My.md).

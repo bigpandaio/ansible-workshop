@@ -8,7 +8,7 @@ So if we'll think a bit, we'd use the `apt` or `yum` module as we installed Ngin
 
 But that wouldn't be much DRY if we have tasks for each package we need.
 
-Ansible helps us here, by giving us the option of doing loops using the `with_item` directive:
+Ansible helps us here, by giving us the option of doing loops using the `with_items` directive:
 
 ```
 ...
