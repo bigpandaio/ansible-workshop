@@ -64,6 +64,19 @@ That's the *Install nginx on RedHat/CentOS* task that is not running because the
 
 AHHH.
 
+#### Wait again. Isn't there a better solution than duplicating my tasks?
+of course there is. 
+	
+
+```
+...
+  tasks:
+    - name: Install nginx on Ubuntu/Debian/RedHat/CentOS
+      package: name=nginx state=present
+```
+
+for more info see : https://docs.ansible.com/ansible/2.5/modules/package_module.html
+
 #### Still though, We've just installed Nginx, haven't really deployed anything have we now?
 
 Ok Ok,
